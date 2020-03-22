@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './home.css';
 import Api from '../../../api';
 
-const { getFilm, getPeople, getFilms } = new Api()
+const { getFilm, getPeople, getFilms, getPerson } = new Api()
 
 export default class Home extends Component {
     
@@ -10,6 +10,7 @@ export default class Home extends Component {
         getFilm(550).then(result => console.log(result))
         getPeople(3).then(result => console.log(result))
         getFilms().then(result => console.log(result))
+        getPerson(287).then(result => console.log(result))
     }
     render() {
         return (

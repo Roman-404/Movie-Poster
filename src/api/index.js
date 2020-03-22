@@ -13,8 +13,21 @@ export default class Api {
         }
     }
 
+    getFilms = async (page) => {
+        const result = await this.getResourceData(`/movie/popular?page=${page}`)
+        return result
+    }
+
     getFilm = async (id) => {
         const result = await this.getResourceData(`/movie/${id}?append_to_response=videos,images`)
+              .then(async data => {
+                const cast = await this.getResourceData(`/movie/${data.id}/credits?`)
+                .catch(() => {return {}})
+                return {
+                    data,
+                    cast
+                }
+            })
         return result
     }
     
@@ -23,8 +36,8 @@ export default class Api {
         return result
     }
 
-    getFilms = async (page) => {
-        const result = await this.getResourceData(`/movie/popular?page=${page}`)
+    getPerson = async (id) => {
+        const result = await this.getResourceData(`/person/${id}?`)
         return result
     }
 }
