@@ -24,7 +24,7 @@ export default class Api {
                 const cast = await this.getResourceData(`/movie/${data.id}/credits?`)
                 .catch(() => {return {}})
                 return {
-                    data,
+                    ...data,
                     cast
                 }
             })
