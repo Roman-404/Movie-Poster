@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    background-color: ivory;
+}
+
+*
+::before
+::after {
+    box-sizing: border-box;
+}

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 export default class Api {
+
     API_KEY = 'ad9cb08f0b66570ea6d73f877b1be0d8';
     
-
     getResourceData = async (URL) => {
         const response = await axios.get(`https://api.themoviedb.org/3${URL}&api_key=${this.API_KEY}`)
         try {
@@ -21,11 +21,13 @@ export default class Api {
     getFilm = async (id) => {
         const result = await this.getResourceData(`/movie/${id}?append_to_response=videos,images`)
               .then(async data => {
-                const cast = await this.getResourceData(`/movie/${data.id}/credits?`)
+                const people = await this.getResourceData(`/movie/${data.id}/credits?`)
                 .catch(() => {return {}})
+                const { cast, crew } = people
                 return {
                     ...data,
-                    cast
+                    cast,
+                    crew
                 }
             })
         return result
@@ -36,8 +38,20 @@ export default class Api {
         return result
     }
 
-    getPerson = async (id) => {
+    getPerson = async (id, page) => {
         const result = await this.getResourceData(`/person/${id}?`)
+              .then(async data => {
+                  const [rec_films, movies] = await Promise.all([
+                    this.getResourceData(`/search/movie?query=${data.name}&page=${page}`),
+                    this.getResourceData(`/discover/movie?&with_cast=${data.id}&page=${page}`)
+                  ])
+                  .catch(() => {return []})
+                  return {
+                      ...data,
+                      movies,
+                      rec_films
+                  }
+              })
         return result
     }
 }
