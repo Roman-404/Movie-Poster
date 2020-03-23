@@ -7,7 +7,9 @@ const Header = () => {
         <main>
             <header>
                 <div className='header'>
-                    <div className='topic'>Movies</div>
+                    <div>
+                        <Link to='/' className='topic'>Movies</Link>
+                    </div>
                     <form>
                         <input></input>
                         <button>Search</button>
@@ -19,7 +21,11 @@ const Header = () => {
                     </nav>
                 </div>
             </header>
-            <div className='intro'></div>
+            <div className='intro'>
+                <div className='recommendations'>
+                    <h1 className='intro-title'>You may like it</h1>
+                </div>
+            </div>
         </main>
     )
 }

@@ -13,8 +13,23 @@ nav {
     font-weight: 700;
 }
 
+h1 {
+    margin: 0 0 10px;
+}
+
 .topic {
     color: lightgoldenrodyellow;
+    font-weight: 900;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.topic:active {
+    opacity: .5;
+}
+
+.topic:hover {
+    color: rgb(236, 227, 165);
 }
 
 .header {
@@ -46,9 +61,37 @@ nav {
 
 .intro {
     height: 750px;
-    padding-top: 60px;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
     background: #326B86;
     background-image: url('../../static/img/mount.jpg');
     background-size: cover;
     background-position: center center no-repeat;
+    -webkit-transition: all 3s;
+    -moz-transition: all 3s;
+    -o-transition: all 3s;
+    transition: all 3s;
+}
+
+.intro:hover {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
+}
+
+.recommendations {
+    width: 100%;
+    max-width: 970px;
+    margin: 0 auto;
+}
+
+.intro-title {
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: ivory;
+    font-size: 50px;
 }
