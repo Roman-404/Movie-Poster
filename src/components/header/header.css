@@ -45,7 +45,7 @@ h1 {
 
 .link {
     text-decoration: none;
-    color: lightslategray;
+    color: wheat;
     margin-left: 50px;
     opacity: .75;
     transition: opacity .1s linear;

@@ -1,0 +1,15 @@
+.home-page {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center
+}
+
+.container {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 970px;
+    font-size: 60px;
+    color: lightslategray;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
