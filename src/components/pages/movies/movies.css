@@ -20,7 +20,7 @@ img {
 }
 
 article {
-    float: left;
+    display: inline-block;
     max-width: 520px;
 }
 

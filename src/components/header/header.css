@@ -8,6 +8,12 @@ header {
     z-index: 1000;
 }
 
+/* main {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+} */
+
 nav {
     font-size: 13px;
     font-weight: 700;
