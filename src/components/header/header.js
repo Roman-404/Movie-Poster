@@ -15,8 +15,8 @@ const Header = () => {
                         <button>Search</button>
                     </form>
                     <nav>
-                        <Link to='/movies' className='link'>Movies</Link>
-                        <Link to='/people' className='link'>People</Link>
+                        <Link to='/movies/' className='link'>Movies</Link>
+                        <Link to='/people/' className='link'>People</Link>
                         <Link to='/' className='link'>Login</Link>
                     </nav>
                 </div>
