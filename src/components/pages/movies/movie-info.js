@@ -25,9 +25,17 @@ const MovieInfo = ({ match }) => {
                     <div className='images-container'>
                         <img className='poster' src={`${img_url}${film.poster_path}`} alt='None'/>
                         <div>
-                            {film.images.backdrops.map(img => <img className='image' src={`${img_url}${img.file_path}`} alt='None'/>).slice(0, 9)}
+                            {film.images.backdrops.map((img, indx) => <img key={indx} className='image' src={`${img_url}${img.file_path}`} alt='None'/>).slice(0, 9)}
                         </div>
                     </div>
+                    <section className='title'>
+                        <h1>{film.title}</h1>
+                        <p>{film.genres.map((e, i) => <span key={i} className='genre'>{e.name}</span>)}</p>
+                    </section>
+                    <section className='title'>
+                        <h1>{film.title}</h1>
+                        <p>{film.overview}</p>
+                    </section>
                 </Fragment>
             : null}
             </div>
