@@ -32,6 +32,13 @@ h1 {
 
 .topic:active {
     opacity: .5;
+    position: relative;
+    top: 1px;
+    -webkit-transition: All 250ms ease;
+    -moz-transition: All 250ms ease;
+    -o-transition: All 250ms ease;
+    -ms-transition: All 250ms ease;
+    transition: All 250ms ease;
 }
 
 .topic:hover {

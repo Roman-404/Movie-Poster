@@ -1,0 +1,22 @@
+.movie-info {
+    margin-top: 10px;
+}
+
+.images-container {
+    display: flex;
+}
+
+.poster {
+    border: 1px solid slategrey;
+}
+
+.image {
+    float: left;
+    max-height: 250px;
+    margin: 0 0 3px 3px;
+    border: 1px solid slategrey;
+}
+
+.image:nth-last-child(-n+3) {
+    margin: 0 0 0 3px;
+}

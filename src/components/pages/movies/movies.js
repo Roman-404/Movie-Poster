@@ -3,7 +3,6 @@ import './movies.css';
 import Api from '../../../api';
 
 const { getFilms } = new Api();
-const img_url = 'https://image.tmdb.org/t/p/w500';
 
 export default class Movies extends Component {
 
@@ -28,14 +27,15 @@ export default class Movies extends Component {
     
     render() {
         const { movies } = this.state;
+        const { history } = this.props;
         return (
             <div className='movies-page'>
                 <div className='movies-content'>
                     {movies.map(film => (
                         <article key={film.id}
-                                 onClick={() => this.props.history.push(film.id.toString())}>
+                                 onClick={() => history.push(film.id.toString())}>
                             <figure>
-                                <p><img src={`${img_url}${film.poster_path}`} alt={film.title}/></p>
+                                <p><img className='img' src={`https://image.tmdb.org/t/p/w500${film.poster_path}`} alt={film.title}/></p>
                                 <figcaption>{film.title}</figcaption>
                             </figure>
                         </article>
