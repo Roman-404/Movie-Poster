@@ -15,11 +15,14 @@
     max-height: 250px;
     margin: 0 0 3px 3px;
     border: 1px solid slategrey;
+    transition: 1s;
 }
 
 .image:hover {
     opacity: .9;
-    transition: opacity .1s linear;
+    transform: scale(1.2);
+    border-radius: 15%;
+    transition: .6s;
 }
 
 .image:nth-last-child(-n+3) {
@@ -27,6 +30,12 @@
 }
 
 .title {
+    font-size: 30px;
+    font-style: oblique;
+    max-width: 1200px;
+}
+
+.overview {
     font-size: 30px;
     font-style: oblique;
     max-width: 1200px;

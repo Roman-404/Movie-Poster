@@ -32,8 +32,8 @@ const MovieInfo = ({ match }) => {
                         <h1>{film.title}</h1>
                         <p>{film.genres.map((e, i) => <span key={i} className='genre'>{e.name}</span>)}</p>
                     </section>
-                    <section className='title'>
-                        <h1>{film.title}</h1>
+                    <section className='overview'>
+                        <h3>{film.tagline ? film.tagline.concat('...') : null}</h3>
                         <p>{film.overview}</p>
                     </section>
                 </Fragment>
