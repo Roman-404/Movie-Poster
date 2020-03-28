@@ -44,12 +44,12 @@ const MovieInfo = ({ match }) => {
                     </section>
                     <div className='about'>
                         <iframe title='trailer' width='780' height='600'
-                            src={`https://www.youtube.com/embed/${film.videos.results[0].key}?autoplay=1`}>
+                            src={`https://www.youtube.com/embed/${film.videos.results.length && film.videos.results[0].key}?autoplay=1`}>
                         </iframe>
                         <ul>
                             <li>Budget: {film.budget} &#36;</li>
                             <li>Revenue: {film.revenue} &#36;</li>
-                            <li><p>Homepage: <a href={film.homepage}>{film.homepage}</a></p></li>
+                            {film.homepage && <li><p>Homepage: <a href={film.homepage}>{film.homepage}</a></p></li>}
                             <li>Release Date: {new Date(film.release_date).toLocaleDateString('en-GB', {
                                 day: 'numeric',
                                 month: 'long',
@@ -57,8 +57,16 @@ const MovieInfo = ({ match }) => {
                             })}</li>
                             <li>Duration: {setTimeFromMinutes(film.runtime)}</li>
                             <li>{film.production_countries.map((e,i) => <div key={i} className='item'>{`${e.name}\n(${e.iso_3166_1})`}</div>)}</li>
+                            <li>{film.production_companies.map(e => <div key={e.id} className='item'>{`${e.name}\n(${e.origin_country})`}</div>)}</li>
                         </ul>
                     </div>
+                    <footer className='container-production-companies'>
+                        {film.production_companies.map(e => <img className='production-company'
+                                                                 key={e.id}
+                                                                 src={`${img_url}${e.logo_path}`}
+                                                                 alt={e.name}
+                                                                 onError={() => console.error()}></img>)}
+                    </footer>
                 </Fragment>
             : null}
             </div>

@@ -53,8 +53,25 @@
     display: inline-block;
 }
   
-.item + .item::before {
+.item::after {
     display: inline-block;
     white-space: pre;
     content: ", ";
+}
+
+.item:last-child::after {
+    content: none;
+}
+
+.container-production-companies {
+    display: flex;
+    margin-top: 30px;
+    padding: 30px;
+    justify-content: center;
+    justify-content: space-around;
+    justify-content: space-evenly;
+}
+
+.production-company {
+    max-height: 150px;
 }
