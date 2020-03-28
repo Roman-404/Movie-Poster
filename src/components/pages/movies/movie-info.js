@@ -8,8 +8,8 @@ const img_url = 'https://image.tmdb.org/t/p/w500';
 const MovieInfo = ({ match }) => {
 
     const {id} = match.params;
-    const [film, setFilm] = useState({})
-    const [trailer, setTrailer] = useState(null)
+    const [film, setFilm] = useState({});
+    const [trailer, setTrailer] = useState(null);
 
     useEffect(() => {
         getFilm(id).then(film => {
@@ -76,7 +76,7 @@ const MovieInfo = ({ match }) => {
                                                                  key={e.id}
                                                                  src={`${img_url}${e.logo_path}`}
                                                                  alt={e.name}
-                                                                 onError={() => console.error()}></img>)}
+                                                                 onError={e => e.target.style.display = 'none'}></img>)}
                     </footer>
                 </Fragment>
             : null}

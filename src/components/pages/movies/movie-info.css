@@ -66,12 +66,13 @@
 .container-production-companies {
     display: flex;
     margin-top: 30px;
-    padding: 30px;
     justify-content: center;
     justify-content: space-around;
     justify-content: space-evenly;
 }
 
 .production-company {
+    overflow:hidden;
+    padding: 10px;
     max-height: 150px;
 }
