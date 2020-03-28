@@ -57,7 +57,7 @@ const MovieInfo = ({ match }) => {
                                 src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}>
                             </iframe>
                         : null}
-                        <ul>
+                        <ul className='movie-list-info'>
                             <li>Budget: {film.budget} &#36;</li>
                             <li>Revenue: {film.revenue} &#36;</li>
                             {film.homepage && <li><p>Homepage: <a href={film.homepage}>{film.homepage}</a></p></li>}
@@ -70,6 +70,12 @@ const MovieInfo = ({ match }) => {
                             <li>{film.production_countries.map((e,i) => <div key={i} className='item'>{`${e.name}\n(${e.iso_3166_1})`}</div>)}</li>
                             <li>{film.production_companies.map(e => <div key={e.id} className='item'>{`${e.name}\n(${e.origin_country})`}</div>)}</li>
                         </ul>
+                        <div className='rating'>
+                            Rating: <br/>
+                            <div className='rating-value'>
+                                {film.vote_average}
+                            </div>
+                        </div>
                     </div>
                     <footer className='container-production-companies'>
                         {film.production_companies.map(e => <img className='production-company'

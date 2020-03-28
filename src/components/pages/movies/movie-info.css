@@ -76,3 +76,24 @@
     padding: 10px;
     max-height: 150px;
 }
+
+.movie-list-info {
+    max-width: 700px;
+}
+
+.rating {
+    font-size: 45px;
+    font-style: oblique;
+    float: left;
+    margin: 0 auto;
+    padding-top: 5%;
+    text-align: center;
+}
+
+.rating-value {
+    font-style: normal;
+    font-size: 80px;
+    font-weight: 900;
+    margin-top: 50px;
+    color: tomato;
+}
