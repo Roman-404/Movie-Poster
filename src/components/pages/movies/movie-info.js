@@ -9,13 +9,22 @@ const MovieInfo = ({ match }) => {
 
     const {id} = match.params;
     const [film, setFilm] = useState({})
+    const [trailer, setTrailer] = useState(null)
 
     useEffect(() => {
         getFilm(id).then(film => {
             setFilm(film)
+            getTrailer(film)
             console.log(film)
         })
     }, [id])
+
+    const getTrailer = async film => {
+        const N = film.videos.results.length;
+        const index = Math.floor(Math.random()*N);
+        const trailer = await N && film.videos.results[index].key;
+        setTrailer(trailer)
+    }
 
     const setTimeFromMinutes = (min) => {
         let hours = Math.trunc(min/60);
@@ -43,9 +52,11 @@ const MovieInfo = ({ match }) => {
                         <p>{film.overview}</p>
                     </section>
                     <div className='about'>
-                        <iframe title='trailer' width='780' height='600'
-                            src={`https://www.youtube.com/embed/${film.videos.results.length && film.videos.results[0].key}?autoplay=1`}>
-                        </iframe>
+                        {trailer ?
+                            <iframe title='trailer' width='780' height='600'
+                                src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}>
+                            </iframe>
+                        : null}
                         <ul>
                             <li>Budget: {film.budget} &#36;</li>
                             <li>Revenue: {film.revenue} &#36;</li>
