@@ -44,3 +44,17 @@
 .genre + .genre::before {
     content: '/';
 }
+
+.about {
+    display: flex;
+}
+
+.item {
+    display: inline-block;
+}
+  
+.item + .item::before {
+    display: inline-block;
+    white-space: pre;
+    content: ", ";
+}

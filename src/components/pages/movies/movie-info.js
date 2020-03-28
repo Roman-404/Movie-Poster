@@ -17,6 +17,12 @@ const MovieInfo = ({ match }) => {
         })
     }, [id])
 
+    const setTimeFromMinutes = (min) => {
+        let hours = Math.trunc(min/60);
+        let minutes = min % 60;
+        return hours + 'h ' + minutes + 'min';
+    };
+
     return (
         <div>
             <div className='movie-info'>
@@ -36,6 +42,23 @@ const MovieInfo = ({ match }) => {
                         <h3>{film.tagline ? film.tagline.concat('...') : null}</h3>
                         <p>{film.overview}</p>
                     </section>
+                    <div className='about'>
+                        <iframe title='trailer' width='780' height='600'
+                            src={`https://www.youtube.com/embed/${film.videos.results[0].key}?autoplay=1`}>
+                        </iframe>
+                        <ul>
+                            <li>Budget: {film.budget} &#36;</li>
+                            <li>Revenue: {film.revenue} &#36;</li>
+                            <li><p>Homepage: <a href={film.homepage}>{film.homepage}</a></p></li>
+                            <li>Release Date: {new Date(film.release_date).toLocaleDateString('en-GB', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric'
+                            })}</li>
+                            <li>Duration: {setTimeFromMinutes(film.runtime)}</li>
+                            <li>{film.production_countries.map((e,i) => <div key={i} className='item'>{`${e.name}\n(${e.iso_3166_1})`}</div>)}</li>
+                        </ul>
+                    </div>
                 </Fragment>
             : null}
             </div>
