@@ -4,6 +4,7 @@ import * as actions from '../../../actions';
 import Api from '../../../api';
 import { connect } from 'react-redux';
 import Loading from '../../loading/loading';
+import { Pagination } from '@material-ui/lab';
 
 const { getFilms } = new Api();
 
@@ -30,14 +31,33 @@ class Movies extends Component {
             return data.results
         }).then(this.onLoadFilms)
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        const { page } = this.state;
+        if (prevState.page !== page) {
+            this.setState({ loading: true })
+            getFilms(page).then(data => this.onLoadFilms(data.results))
+        }
+    }
+
+    componentWillUnmount() {
+        this.setState({ loading: true })
+    }
     
     render() {
         const { history, movies } = this.props;
-        const { loading } = this.state;
+        const { loading, total_pages, page } = this.state;
 
         return (
             <Fragment>
                 <Loading loading={loading}/>
+                <div className='pagination'>
+                    <Pagination count={total_pages}
+                                onChange={(event, value) => this.setState({page: value})}
+                                siblingCount={3}
+                                page={page}
+                                variant='outlined' shape='rounded'/>
+                </div>
                 <div className='movies-page'>
                     <div className='movies-content'>
                         {movies.map(film => (

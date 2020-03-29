@@ -19,6 +19,14 @@
     border-radius: 10px;
 }
 
+.pagination {
+    position: sticky;
+    top: 64px;
+    z-index: 100;
+    height: 130px;
+    background: rgba(42, 102, 134, 0.9);
+}
+
 .movies-article {
     display: inline-block;
     max-width: 520px;
