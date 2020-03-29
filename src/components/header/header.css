@@ -6,6 +6,8 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
+    position: fixed;
+    background: rgba(42, 102, 134, 0.9);
 }
 
 /* main {
@@ -81,6 +83,7 @@ h1 {
     background-image: url('../../static/img/mount.jpg');
     background-size: cover;
     background-position: center center no-repeat;
+    background-attachment: fixed;
     -webkit-transition: all 3s;
     -moz-transition: all 3s;
     -o-transition: all 3s;

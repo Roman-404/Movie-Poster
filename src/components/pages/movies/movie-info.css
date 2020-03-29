@@ -1,5 +1,6 @@
 .movie-page {
     margin-top: 10px;
+    padding: 25px;
 }
 
 .images-container {
@@ -21,7 +22,7 @@
 .image:hover {
     opacity: .9;
     transform: scale(1.2);
-    border-radius: 15%;
+    border-radius: 50%;
     transition: .6s;
 }
 
