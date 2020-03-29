@@ -19,12 +19,12 @@
     border-radius: 10px;
 }
 
-article {
+.movies-article {
     display: inline-block;
     max-width: 520px;
 }
 
-figure {
+.movies-figure {
     width: 100%;
     max-width: 506px;
     background: #5f6a72;
@@ -34,13 +34,13 @@ figure {
     transform: perspective(1px) translateZ(0);
 }
 
-figcaption {
+.movies-figcaption {
     font: italic smaller sans-serif;
     padding-bottom: 25px;
     color: #fff;
 }
 
-figure:hover {
+.movies-figure:hover {
     -webkit-animation-name: figure;
     animation-name: figure;
     -webkit-animation-duration: 0.75s;
@@ -51,7 +51,7 @@ figure:hover {
     animation-iteration-count: 1;
 }
 
-figure:active {
+.movies-figure:active {
     opacity: 0.5;
 }
 

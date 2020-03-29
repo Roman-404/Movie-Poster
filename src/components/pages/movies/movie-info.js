@@ -34,7 +34,7 @@ const MovieInfo = ({ match }) => {
 
     return (
         <div>
-            <div className='movie-info'>
+            <div className='movie-page'>
                 {Object.keys(film).length ? 
                 <Fragment>
                     <div className='images-container'>
@@ -57,26 +57,41 @@ const MovieInfo = ({ match }) => {
                                 src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}>
                             </iframe>
                         : null}
-                        <ul className='movie-list-info'>
-                            <li>Budget: {film.budget} &#36;</li>
-                            <li>Revenue: {film.revenue} &#36;</li>
-                            {film.homepage && <li><p>Homepage: <a href={film.homepage}>{film.homepage}</a></p></li>}
-                            <li>Release Date: {new Date(film.release_date).toLocaleDateString('en-GB', {
-                                day: 'numeric',
-                                month: 'long',
-                                year: 'numeric'
-                            })}</li>
-                            <li>Duration: {setTimeFromMinutes(film.runtime)}</li>
-                            <li>{film.production_countries.map((e,i) => <div key={i} className='item'>{`${e.name}\n(${e.iso_3166_1})`}</div>)}</li>
-                            <li>{film.production_companies.map(e => <div key={e.id} className='item'>{`${e.name}\n(${e.origin_country})`}</div>)}</li>
-                        </ul>
-                        <div className='rating'>
-                            Rating: <br/>
-                            <div className='rating-value'>
-                                {film.vote_average}
+                        {/* <div className='movie-info'> */}
+                            <ul className='movie-list-info'>
+                                {film.budget ? <li>Budget: {film.budget} &#36;</li> : null}
+                                {film.revenue ? <li>Revenue: {film.revenue} &#36;</li> : null}
+                                {film.homepage && <li><p>Homepage: <a href={film.homepage}>{film.homepage}</a></p></li>}
+                                <li>Release Date: {new Date(film.release_date).toLocaleDateString('en-GB', {
+                                    day: 'numeric',
+                                    month: 'long',
+                                    year: 'numeric'
+                                })}</li>
+                                <li>Duration: {setTimeFromMinutes(film.runtime)}</li>
+                                <li>{film.production_countries.map((e,i) => <div key={i} className='item'>{`${e.name}\n(${e.iso_3166_1})`}</div>)}</li>
+                                <li>{film.production_companies.map(e => <div key={e.id}
+                                                                             className='item'>
+                                                                             {`${e.name}\n${e.origin_country ? `(${e.origin_country})` : String.fromCharCode(174)}`}
+                                                                        </div>)}
+                                </li>
+                            </ul>
+                            <div className='rating'>
+                                Rating: <br/>
+                                <div className='rating-value'>
+                                    {film.vote_average}
+                                </div>
                             </div>
-                        </div>
+                        {/* </div> */}
+                        {/* <div className='cast-crew'>cast</div> */}
                     </div>
+                    {film.belongs_to_collection ? 
+                                <figure className='movie-figure'>
+                                    <p>
+                                        <b>Belongs to collection: </b>
+                                        <span>{film.belongs_to_collection.name}</span>
+                                    </p>
+                                    <img src={`${img_url}${film.belongs_to_collection.backdrop_path}`} alt='None'></img>
+                                </figure> : null}
                     <footer className='container-production-companies'>
                         {film.production_companies.map(e => <img className='production-company'
                                                                  key={e.id}

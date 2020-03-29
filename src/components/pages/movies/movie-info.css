@@ -1,4 +1,4 @@
-.movie-info {
+.movie-page {
     margin-top: 10px;
 }
 
@@ -77,16 +77,24 @@
     max-height: 150px;
 }
 
+/* .movie-info {
+    display: flex;
+} */
+
 .movie-list-info {
     max-width: 700px;
 }
+
+/* .cast-crew {
+    display: block;
+} */
 
 .rating {
     font-size: 45px;
     font-style: oblique;
     float: left;
     margin: 0 auto;
-    padding-top: 5%;
+    /* padding-top: 5%; */
     text-align: center;
 }
 
@@ -96,4 +104,19 @@
     font-weight: 900;
     margin-top: 50px;
     color: tomato;
+}
+
+.movie-figure {
+    margin: 30px auto;
+    width: 100%;
+    max-width: 510px;
+    padding: 1px;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #5f6a72;
+    border-radius: 10px;
+}
+
+.movie-figure img {
+    border-radius: 5px;
 }
