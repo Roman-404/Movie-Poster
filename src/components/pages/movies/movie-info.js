@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import './movie-info.css';
 import Api from '../../../api';
+import Loading from '../../loading/loading';
 
 const { getFilm } = new Api();
 const img_url = 'https://image.tmdb.org/t/p/w500';
@@ -10,11 +11,13 @@ const MovieInfo = ({ match }) => {
     const {id} = match.params;
     const [film, setFilm] = useState({});
     const [trailer, setTrailer] = useState(null);
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         getFilm(id).then(film => {
             setFilm(film)
             getTrailer(film)
+            setLoading(false)
             console.log(film)
         })
     }, [id])
@@ -34,6 +37,7 @@ const MovieInfo = ({ match }) => {
 
     return (
         <div>
+            <Loading loading={loading}/>
             <div className='movie-page'>
                 {Object.keys(film).length ? 
                 <Fragment>
