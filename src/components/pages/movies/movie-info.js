@@ -86,10 +86,7 @@ const MovieInfo = ({ match }) => {
                     </div>
                     {film.belongs_to_collection ? 
                                 <figure className='movie-figure'>
-                                    <p>
-                                        <b>Belongs to collection: </b>
-                                        <span>{film.belongs_to_collection.name}</span>
-                                    </p>
+                                    <p><b>{film.belongs_to_collection.name}</b></p>
                                     <img src={`${img_url}${film.belongs_to_collection.backdrop_path}`} alt='None'></img>
                                 </figure> : null}
                     <footer className='container-production-companies'>

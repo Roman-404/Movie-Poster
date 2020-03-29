@@ -1,14 +1,15 @@
 import * as actionTypes from '../action-types';
 
 const initState = {
-    films: []
+    movies: []
 }
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
         case actionTypes.LOAD_FILMS:
             return {
-                films: action.payload
+                ...state,
+                movies: action.payload
             }
     
         default:

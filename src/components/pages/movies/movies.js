@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import './movies.css';
+import * as actions from '../../../actions';
 import Api from '../../../api';
+import { connect } from 'react-redux';
 
 const { getFilms } = new Api();
 
-export default class Movies extends Component {
+class Movies extends Component {
 
     state = {
-        movies: [],
         page: null,
         total_pages: null,
         per_page: null
     }
 
     onLoadFilms = movies => {
-        this.setState({ movies })
+        this.props.loadFilms(movies)
     }
 
     componentDidMount() {
@@ -26,8 +27,8 @@ export default class Movies extends Component {
     }
     
     render() {
-        const { movies } = this.state;
-        const { history } = this.props;
+        const { history, movies } = this.props;
+
         return (
             <div className='movies-page'>
                 <div className='movies-content'>
@@ -43,5 +44,11 @@ export default class Movies extends Component {
                 </div>
             </div>
         )
-    }
-}
+    };
+};
+
+const mapStateToProps = ({ movies }) => {
+    return { movies }
+};
+
+export default connect(mapStateToProps, actions)(Movies);
