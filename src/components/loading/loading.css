@@ -5,3 +5,8 @@
 .loaded {
     visibility: hidden;
 }
+
+.loading, .loaded {
+    position: sticky;
+    top: 60px
+}
