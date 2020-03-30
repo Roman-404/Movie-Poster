@@ -4,7 +4,7 @@ import * as actions from '../../../actions';
 import Api from '../../../api';
 import { connect } from 'react-redux';
 import Loading from '../../loading/loading';
-import { Pagination } from '@material-ui/lab';
+import ModPagination from '../pagination';
 
 const { getFilms } = new Api();
 
@@ -43,6 +43,10 @@ class Movies extends Component {
     componentWillUnmount() {
         this.setState({ loading: true })
     }
+
+    handleChangePage = (event, value) => {
+        this.setState({page: value})
+    }
     
     render() {
         const { history, movies } = this.props;
@@ -52,11 +56,9 @@ class Movies extends Component {
             <Fragment>
                 <Loading loading={loading}/>
                 <div className='pagination'>
-                    <Pagination count={total_pages}
-                                onChange={(event, value) => this.setState({page: value})}
-                                siblingCount={3}
-                                page={page}
-                                variant='outlined' shape='rounded'/>
+                    <ModPagination page={page}
+                                   total_pages={total_pages}
+                                   handleChangePage={this.handleChangePage}/>
                 </div>
                 <div className='movies-page'>
                     <div className='movies-content'>
