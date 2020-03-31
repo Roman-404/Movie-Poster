@@ -1,7 +1,8 @@
 import * as actionTypes from '../action-types';
 
 const initState = {
-    movies: []
+    movies: [],
+    page: null
 }
 
 const reducer = (state = initState, action) => {
@@ -10,6 +11,11 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 movies: action.payload
+            }
+        case actionTypes.GET_CURRENT_PAGE:
+            return {
+                ...state,
+                page: action.payload
             }
     
         default:

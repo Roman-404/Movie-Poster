@@ -11,7 +11,6 @@ const { getFilms } = new Api();
 class Movies extends Component {
 
     state = {
-        page: this.props.location.search.match(/\d+/g),
         total_pages: null,
         loading: true
     }
@@ -24,7 +23,8 @@ class Movies extends Component {
     }
 
     componentDidMount() {
-        const { page } = this.state;
+        const { location: { search }} = this.props;
+        const page = search.match(/\d+/g);
         getFilms(page).then(data => {
             this.setState({ total_pages: data.total_pages })
             return data.results
@@ -32,8 +32,8 @@ class Movies extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { page } = this.state;
-        if (prevState.page !== page) {
+        const { page } = this.props;
+        if (prevProps.page !== page) {
             this.setState({ loading: true })
             getFilms(page).then(data => this.onLoadFilms(data.results))
         }
@@ -43,20 +43,17 @@ class Movies extends Component {
         this.setState({ loading: true })
     }
 
-    handleChangePage = (event, value) => {
-        this.setState({page: value})
-    }
     
     render() {
         const { history, movies } = this.props;
         const { loading, total_pages } = this.state;
+        console.log(this.props)
 
         return (
             <Fragment>
                 <Loading loading={loading}/>
                 <div className='pagination'>
-                    <Pagination total_pages={total_pages}
-                                handleChangePage={this.handleChangePage}/>
+                    <Pagination total_pages={total_pages}/>
                 </div>
                 <div className='movies-page'>
                     <div className='movies-content'>
@@ -76,8 +73,8 @@ class Movies extends Component {
     };
 };
 
-const mapStateToProps = ({ movies }) => {
-    return { movies }
+const mapStateToProps = ({ movies, page }) => {
+    return { movies, page }
 };
 
 export default connect(mapStateToProps, actions)(Movies);

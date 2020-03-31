@@ -6,3 +6,10 @@ export const loadFilms = films => {
         payload: films
     }
 }
+
+export const getCurrPage = page => {
+    return {
+        type: actionTypes.GET_CURRENT_PAGE,
+        payload: page
+    }
+}

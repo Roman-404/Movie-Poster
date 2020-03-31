@@ -2,6 +2,8 @@ import React from 'react';
 import { Pagination, PaginationItem } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core';
 import { Link, Route } from 'react-router-dom';
+import { getCurrPage } from '../../actions';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles({
     root: {
@@ -12,7 +14,7 @@ const useStyles = makeStyles({
     }
 })
 
-const ModPagination = ({ total_pages, handleChangePage }) => {
+const ModPagination = ({ total_pages, getCurrPage }) => {
     const classes = useStyles()
     return (
         <Route>
@@ -22,7 +24,7 @@ const ModPagination = ({ total_pages, handleChangePage }) => {
 
                 return (
             <Pagination count={total_pages}
-                        onChange={handleChangePage}
+                        onChange={(e, page) => getCurrPage(page)}
                         siblingCount={3}
                         page={page}
                         variant='outlined' shape='rounded'
@@ -41,4 +43,8 @@ const ModPagination = ({ total_pages, handleChangePage }) => {
     )
 }
 
-export default ModPagination;
+const mapDispatchToProps = {
+    getCurrPage
+}
+
+export default connect(null, mapDispatchToProps)(ModPagination);
