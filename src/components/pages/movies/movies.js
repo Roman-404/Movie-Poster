@@ -4,7 +4,7 @@ import * as actions from '../../../actions';
 import Api from '../../../api';
 import { connect } from 'react-redux';
 import Loading from '../../loading/loading';
-import ModPagination from '../pagination';
+import Pagination from '../pagination';
 
 const { getFilms } = new Api();
 
@@ -13,7 +13,6 @@ class Movies extends Component {
     state = {
         page: null,
         total_pages: null,
-        per_page: null,
         loading: true
     }
 
@@ -50,15 +49,14 @@ class Movies extends Component {
     
     render() {
         const { history, movies } = this.props;
-        const { loading, total_pages, page } = this.state;
+        const { loading, total_pages } = this.state;
 
         return (
             <Fragment>
                 <Loading loading={loading}/>
                 <div className='pagination'>
-                    <ModPagination page={page}
-                                   total_pages={total_pages}
-                                   handleChangePage={this.handleChangePage}/>
+                    <Pagination total_pages={total_pages}
+                                handleChangePage={this.handleChangePage}/>
                 </div>
                 <div className='movies-page'>
                     <div className='movies-content'>
