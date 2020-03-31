@@ -1,17 +1,19 @@
 import React from 'react';
 import { Pagination, PaginationItem } from '@material-ui/lab';
-import {styled} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-
-const ModPaginationItem = styled(PaginationItem)(theme => ({
-    color: 'orange',
-    borderColor: 'orange',
-    height: 95,
-    width: 95
-}));
+const useStyles = makeStyles({
+    root: {
+        color: 'orange',
+        borderColor: 'orange',
+        width: 95,
+        height: 95
+    }
+})
 
 const ModPagination = ({ total_pages, page, handleChangePage }) => {
+    const classes = useStyles()
     return (
         <Pagination count={total_pages}
                     onChange={handleChangePage}
@@ -19,14 +21,14 @@ const ModPagination = ({ total_pages, page, handleChangePage }) => {
                     page={page}
                     variant='outlined' shape='rounded'
                     renderItem={(item) => (
-                        <ModPaginationItem
-                        //   component={Link}
-                        //   to={`/inbox${item.page === 1 ? '' : `?page=${item.page}`}`}
-                          {...item}
+                        <PaginationItem
+                                className={classes.root}
+                                component={Link}
+                                to={`/movies/${item.page === 1 ? '' : `?page=${item.page}`}`}
+                                {...item}
+                            />
+                        )}
                     />
-                )
-            }
-        />
     )
 }
 
