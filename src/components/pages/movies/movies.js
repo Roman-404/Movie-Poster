@@ -11,7 +11,7 @@ const { getFilms } = new Api();
 class Movies extends Component {
 
     state = {
-        page: null,
+        page: this.props.location.search.match(/\d+/g),
         total_pages: null,
         loading: true
     }
