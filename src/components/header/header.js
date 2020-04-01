@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
+import { connect } from 'react-redux';
 
-const Header = () => {
+const Header = ({ page }) => {
     return (
         <main>
             <header>
@@ -15,7 +16,7 @@ const Header = () => {
                         <button>Search</button>
                     </form>
                     <nav>
-                        <Link to='/movies/' className='link'>Movies</Link>
+                        <Link to={`/movies/${page ? `?page=${page}` : ''}`} className='link'>Movies</Link>
                         <Link to='/people/' className='link'>People</Link>
                         <Link to='/' className='link'>Login</Link>
                     </nav>
@@ -30,4 +31,8 @@ const Header = () => {
     )
 }
 
-export default Header;
+const mapStateToProps = ({ page }) => {
+    return { page }
+}
+
+export default connect(mapStateToProps)(Header);

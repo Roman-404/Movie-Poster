@@ -23,8 +23,9 @@ class Movies extends Component {
     }
 
     componentDidMount() {
-        const { location: { search }} = this.props;
+        const { location: { search }, getCurrPage} = this.props;
         const page = search.match(/\d+/g);
+        getCurrPage(page)
         getFilms(page).then(data => {
             this.setState({ total_pages: data.total_pages })
             return data.results
