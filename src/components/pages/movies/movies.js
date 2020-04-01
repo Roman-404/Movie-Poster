@@ -57,7 +57,7 @@ class Movies extends Component {
                     <div className='movies-content'>
                         {movies.map(film => (
                             <article key={film.id} className='movies-article'
-                                    onClick={() => history.push(film.id.toString())}>
+                                     onClick={() => history.push(film.id.toString())}>
                                 <figure className='movies-figure'>
                                     <p><img className='img' src={`https://image.tmdb.org/t/p/w500${film.poster_path}`} alt={film.title}/></p>
                                     <figcaption className='movies-figcaption'>{film.title}</figcaption>

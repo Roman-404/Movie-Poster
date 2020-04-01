@@ -1,0 +1,22 @@
+.movie-collection {
+    display: inline-block;
+    max-width: 350px;
+    border: blanchedalmond 1px solid;
+    margin: 10px;
+}
+
+.movie-collection-title {
+    color: lightslategray;
+    text-align: center;
+    max-width: 230px;
+    padding: 3%;
+}
+
+.movie-collection-fig {
+    margin: 0 auto;
+}
+
+.movie-collection-fig img {
+    height: 350px;
+}
+

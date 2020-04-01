@@ -32,6 +32,10 @@ export default class Api {
             })
         return result
     }
+
+    loadCollection = (id) => {
+        return this.getResourceData(`/collection/${id}?`)
+    }
     
     getPeople = async (page) => {
         const result = await this.getResourceData(`/person/popular?language=en-US&page=${page}`)

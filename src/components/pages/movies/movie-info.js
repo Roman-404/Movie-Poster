@@ -4,8 +4,9 @@ import Api from '../../../api';
 import Loading from '../../loading/loading';
 import { setLoading } from '../../../actions';
 import { connect } from 'react-redux';
+import MovieFromCollection from './movie-from-collection';
 
-const { getFilm } = new Api();
+const { getFilm, loadCollection } = new Api();
 const img_url = 'https://image.tmdb.org/t/p/w500';
 
 const MovieInfo = ({ match, setLoading, loading }) => {
@@ -13,11 +14,13 @@ const MovieInfo = ({ match, setLoading, loading }) => {
     const {id} = match.params;
     const [film, setFilm] = useState({});
     const [trailer, setTrailer] = useState(null);
+    const [collection, setCollection] = useState(null)
 
     useEffect(() => {
         getFilm(id).then(film => {
             setFilm(film)
             getTrailer(film)
+            getCollection(film)
             setLoading(false)
             console.log(film)
         })
@@ -35,6 +38,25 @@ const MovieInfo = ({ match, setLoading, loading }) => {
         let minutes = min % 60;
         return hours + 'h ' + minutes + 'min';
     };
+
+    const getCollection = (film) => {
+        film.belongs_to_collection && loadCollection(film.belongs_to_collection.id)
+        .then(e => {
+            console.log(e)
+            setCollection(e.parts)
+        })
+    }
+
+    const createMovieFromCollectionItem = (film) => {
+        if (film) {
+            return {
+                id,
+                title: film.title,
+                poster_path: img_url.concat(film.poster_path)
+            }
+        }
+        return {}
+    }
 
     return (
         <div>
@@ -94,6 +116,8 @@ const MovieInfo = ({ match, setLoading, loading }) => {
                                     <p><b>{film.belongs_to_collection.name}</b></p>
                                     <img src={`${img_url}${film.belongs_to_collection.backdrop_path}`} alt='None'></img>
                                 </figure> : null}
+                    {collection && collection.map(film => <MovieFromCollection key={film.id}
+                                                                               film={createMovieFromCollectionItem(film)}/>)}
                     <footer className='container-production-companies'>
                         {film.production_companies.map(e => <img className='production-company'
                                                                  key={e.id}
