@@ -3,6 +3,15 @@
     max-width: 350px;
     border: blanchedalmond 1px solid;
     margin: 10px;
+    transition: .1s;
+}
+
+.movie-collection:active {
+    -webkit-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+    box-shadow: 0 0 0 5px rgb(189, 185, 171, .5);
+    transition: .1s;
 }
 
 .movie-collection-title {
