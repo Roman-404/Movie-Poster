@@ -121,3 +121,7 @@
 .movie-figure img {
     border-radius: 5px;
 }
+
+.movie-collection-container{
+    text-align: center;
+}

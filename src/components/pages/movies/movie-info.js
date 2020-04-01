@@ -50,7 +50,7 @@ const MovieInfo = ({ match, setLoading, loading }) => {
     const createMovieFromCollectionItem = (film) => {
         if (film) {
             return {
-                id,
+                id: film.id,
                 title: film.title,
                 poster_path: img_url.concat(film.poster_path)
             }
@@ -116,8 +116,11 @@ const MovieInfo = ({ match, setLoading, loading }) => {
                                     <p><b>{film.belongs_to_collection.name}</b></p>
                                     <img src={`${img_url}${film.belongs_to_collection.backdrop_path}`} alt='None'></img>
                                 </figure> : null}
-                    {collection && collection.map(film => <MovieFromCollection key={film.id}
-                                                                               film={createMovieFromCollectionItem(film)}/>)}
+                    <div className='movie-collection-container'>
+                        {collection && collection.filter(e => e.id !== film.id)
+                                                 .map(film => <MovieFromCollection key={film.id}
+                                                                                   film={createMovieFromCollectionItem(film)}/>)}
+                    </div>
                     <footer className='container-production-companies'>
                         {film.production_companies.map(e => <img className='production-company'
                                                                  key={e.id}
