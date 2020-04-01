@@ -13,3 +13,10 @@ export const getCurrPage = page => {
         payload: page
     }
 }
+
+export const setLoading = value => {
+    return {
+        type: actionTypes.SET_LOADING,
+        payload: value
+    }
+}

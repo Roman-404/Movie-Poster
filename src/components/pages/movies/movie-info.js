@@ -2,16 +2,17 @@ import React, { useEffect, useState, Fragment } from 'react';
 import './movie-info.css';
 import Api from '../../../api';
 import Loading from '../../loading/loading';
+import { setLoading } from '../../../actions';
+import { connect } from 'react-redux';
 
 const { getFilm } = new Api();
 const img_url = 'https://image.tmdb.org/t/p/w500';
 
-const MovieInfo = ({ match }) => {
+const MovieInfo = ({ match, setLoading, loading }) => {
 
     const {id} = match.params;
     const [film, setFilm] = useState({});
     const [trailer, setTrailer] = useState(null);
-    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         getFilm(id).then(film => {
@@ -20,7 +21,7 @@ const MovieInfo = ({ match }) => {
             setLoading(false)
             console.log(film)
         })
-    }, [id])
+    }, [id, setLoading])
 
     const getTrailer = async film => {
         const N = film.videos.results.length;
@@ -107,4 +108,12 @@ const MovieInfo = ({ match }) => {
     )
 }
 
-export default MovieInfo;
+const mapStateToProps = ({ loading }) => {
+    return { loading }
+}
+
+const mapDispatchToProps = {
+    setLoading
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

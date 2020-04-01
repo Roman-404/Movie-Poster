@@ -12,14 +12,11 @@ class Movies extends Component {
 
     state = {
         total_pages: null,
-        loading: true
     }
 
     onLoadFilms = movies => {
         this.props.loadFilms(movies)
-        this.setState({
-            loading: false
-        })
+        this.props.setLoading(false)
     }
 
     componentDidMount() {
@@ -35,19 +32,19 @@ class Movies extends Component {
     componentDidUpdate(prevProps, prevState) {
         const { page } = this.props;
         if (prevProps.page !== page) {
-            this.setState({ loading: true })
+            this.props.setLoading(true)
             getFilms(page).then(data => this.onLoadFilms(data.results))
         }
     }
 
     componentWillUnmount() {
-        this.setState({ loading: true })
+        this.props.setLoading(true)
     }
 
     
     render() {
-        const { history, movies } = this.props;
-        const { loading, total_pages } = this.state;
+        const { history, movies, loading } = this.props;
+        const { total_pages } = this.state;
         console.log(this.props)
 
         return (
@@ -74,8 +71,8 @@ class Movies extends Component {
     };
 };
 
-const mapStateToProps = ({ movies, page }) => {
-    return { movies, page }
+const mapStateToProps = ({ movies, page, loading }) => {
+    return { movies, page, loading }
 };
 
 export default connect(mapStateToProps, actions)(Movies);
