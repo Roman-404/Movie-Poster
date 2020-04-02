@@ -14,7 +14,8 @@ const MovieInfo = ({ match, setLoading, loading }) => {
     const {id} = match.params;
     const [film, setFilm] = useState({});
     const [trailer, setTrailer] = useState(null);
-    const [collection, setCollection] = useState(null)
+    const [collection, setCollection] = useState([]);
+    const [collection_description, setCollectionDescription] = useState(null);
 
     useEffect(() => {
         getFilm(id).then(film => {
@@ -42,7 +43,7 @@ const MovieInfo = ({ match, setLoading, loading }) => {
     const getCollection = (film) => {
         film.belongs_to_collection && loadCollection(film.belongs_to_collection.id)
         .then(e => {
-            console.log(e)
+            setCollectionDescription(e.overview)
             setCollection(e.parts)
         })
     }
@@ -116,11 +117,14 @@ const MovieInfo = ({ match, setLoading, loading }) => {
                                 <figure className='movie-figure'>
                                     <p><b>{film.belongs_to_collection.name}</b></p>
                                     <img src={`${img_url}${film.belongs_to_collection.backdrop_path}`} alt='None'></img>
+                                    <section className='collection-description'>
+                                        {collection_description}
+                                     </section>
                                 </figure> : null}
                     <div className='movie-collection-container'>
-                        {collection && collection.filter(e => e.id !== film.id)
-                                                 .map(film => <MovieFromCollection key={film.id}
-                                                                                   film={createMovieFromCollectionItem(film)}/>)}
+                        {collection.filter(e => e.id !== film.id)
+                                   .map(film => <MovieFromCollection key={film.id}
+                                                                     film={createMovieFromCollectionItem(film)}/>)}
                     </div>
                     <footer className='container-production-companies'>
                         {film.production_companies.map(e => <img className='production-company'

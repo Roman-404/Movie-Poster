@@ -125,3 +125,9 @@
 .movie-collection-container{
     text-align: center;
 }
+
+.collection-description {
+    text-align: left;
+    max-width: 500px;
+    padding: 1em;
+}
