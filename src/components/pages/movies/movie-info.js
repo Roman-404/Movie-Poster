@@ -52,7 +52,8 @@ const MovieInfo = ({ match, setLoading, loading }) => {
             return {
                 id: film.id,
                 title: film.title,
-                poster_path: img_url.concat(film.poster_path)
+                poster_path: img_url.concat(film.poster_path),
+                year: new Date(film.release_date).getFullYear()
             }
         }
         return {}

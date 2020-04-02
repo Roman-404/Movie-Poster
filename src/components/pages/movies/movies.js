@@ -45,7 +45,7 @@ class Movies extends Component {
     render() {
         const { history, movies, loading } = this.props;
         const { total_pages } = this.state;
-        console.log(this.props)
+        // console.log(this.props)
 
         return (
             <Fragment>

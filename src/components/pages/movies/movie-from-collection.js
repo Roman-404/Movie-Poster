@@ -3,7 +3,7 @@ import './movie-from-collection.css';
 import { Redirect } from 'react-router-dom';
 
 export default function MovieFromCollection({film}) {
-    const { id, title, poster_path } = film;
+    const { id, title, poster_path, year } = film;
     const [selected, setSelect] = useState(false)
     
     if (selected) {
@@ -15,7 +15,7 @@ export default function MovieFromCollection({film}) {
              onClick={() => setSelect(true)}>
             <figure key={id} className='movie-collection-fig'>
                 <img src={poster_path} alt=''/>
-                <figcaption className='movie-collection-title'>{title}</figcaption>
+                <figcaption className='movie-collection-title'>{title.concat(',\n', year)}</figcaption>
             </figure>
         </div>
     )
