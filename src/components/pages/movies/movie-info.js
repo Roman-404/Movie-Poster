@@ -51,11 +51,12 @@ const MovieInfo = ({ match, setLoading, loading }) => {
 
     const createMovieFromCollectionItem = (film) => {
         if (film) {
+            const { id, title, poster_path, release_date} = film;
             return {
-                id: film.id,
-                title: film.title,
-                poster_path: img_url.concat(film.poster_path),
-                year: new Date(film.release_date).getFullYear()
+                id,
+                title,
+                poster_path: img_url.concat(poster_path),
+                year: new Date(release_date).getFullYear()
             }
         }
         return {}
