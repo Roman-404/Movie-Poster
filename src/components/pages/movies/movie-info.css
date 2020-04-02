@@ -110,7 +110,7 @@
 .movie-figure {
     margin: 30px auto;
     width: 100%;
-    max-width: 510px;
+    max-width: 900px;
     padding: 1px;
     text-align: center;
     color: whitesmoke;
@@ -119,6 +119,7 @@
 }
 
 .movie-figure img {
+    width: 800px;
     border-radius: 5px;
 }
 
@@ -128,6 +129,7 @@
 
 .collection-description {
     text-align: left;
-    max-width: 500px;
+    max-width: 800px;
     padding: 1em;
+    margin: 0 auto;
 }

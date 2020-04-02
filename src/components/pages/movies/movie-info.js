@@ -8,6 +8,7 @@ import MovieFromCollection from './movie-from-collection';
 
 const { getFilm, loadCollection } = new Api();
 const img_url = 'https://image.tmdb.org/t/p/w500';
+const img_url_orig = 'https://image.tmdb.org/t/p/original';
 
 const MovieInfo = ({ match, setLoading, loading }) => {
 
@@ -116,7 +117,7 @@ const MovieInfo = ({ match, setLoading, loading }) => {
                     {film.belongs_to_collection ? 
                                 <figure className='movie-figure'>
                                     <p><b>{film.belongs_to_collection.name}</b></p>
-                                    <img src={`${img_url}${film.belongs_to_collection.backdrop_path}`} alt='None'></img>
+                                    <img src={`${img_url_orig}${film.belongs_to_collection.backdrop_path}`} alt='None'></img>
                                     <section className='collection-description'>
                                         {collection_description}
                                      </section>
