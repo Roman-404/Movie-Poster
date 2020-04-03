@@ -10,9 +10,9 @@ const { getFilms, searchMovie } = new Api();
 
 class Movies extends Component {
 
-    state = {
-        total_pages: null,
-    }
+    // state = {
+    //     total_pages: null,
+    // }
 
     onLoadFilms = movies => {
         this.props.loadFilms(movies)
@@ -20,11 +20,11 @@ class Movies extends Component {
     }
 
     componentDidMount() {
-        const { location: { search }, getCurrPage} = this.props;
+        const { location: { search }, getCurrPage, setTotalPages } = this.props;
         const page = search.match(/\d+/g);
         getCurrPage(page)
         getFilms(page).then(data => {
-            this.setState({ total_pages: data.total_pages })
+            setTotalPages(data.total_pages)
             return data.results
         }).then(this.onLoadFilms)
     }
@@ -44,8 +44,7 @@ class Movies extends Component {
 
     
     render() {
-        const { history, movies, loading } = this.props;
-        const { total_pages } = this.state;
+        const { history, movies, loading, total_pages } = this.props;
         console.log(this.props)
 
         return (
@@ -72,8 +71,8 @@ class Movies extends Component {
     };
 };
 
-const mapStateToProps = ({ movies: { movies, page }, util: { loading, keyword }}) => {
-    return { movies, page, loading, keyword }
+const mapStateToProps = ({ movies: { movies, page, total_pages }, util: { loading, keyword }}) => {
+    return { movies, page, loading, keyword, total_pages }
 };
 
 export default connect(mapStateToProps, actions)(Movies);

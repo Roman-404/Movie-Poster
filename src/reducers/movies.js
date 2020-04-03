@@ -2,7 +2,8 @@ import * as actionTypes from '../action-types';
 
 const initState = {
     movies: [],
-    page: null
+    page: null,
+    total_pages: null
 }
 
 const reducer = (state = initState, action) => {
@@ -16,6 +17,11 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 page: action.payload
+            }
+        case actionTypes.SET_TOTAL_PAGES:
+            return {
+                ...state,
+                total_pages: action.payload
             }
     
         default:

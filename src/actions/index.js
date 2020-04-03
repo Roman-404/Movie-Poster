@@ -27,3 +27,10 @@ export const setKeyword = keyword => {
         payload: keyword
     }
 }
+
+export const setTotalPages = pages => {
+    return {
+        type: actionTypes.SET_TOTAL_PAGES,
+        payload: pages
+    }
+}

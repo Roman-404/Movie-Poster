@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Api from '../../api';
-import { loadFilms, setKeyword } from '../../actions';
+import { loadFilms, setKeyword, setTotalPages } from '../../actions';
 import { connect } from 'react-redux';
 
 const { searchMovie, getFilms } = new Api();
 
-const SearchBar = ({movies: { movies, page }, loadFilms, setKeyword, keyword}) => {
+const SearchBar = ({movies: { movies, page }, loadFilms, setTotalPages, setKeyword, keyword}) => {
 
     const [filter_movies, setFilter] = useState([])
 
@@ -28,7 +28,10 @@ const SearchBar = ({movies: { movies, page }, loadFilms, setKeyword, keyword}) =
     const filterMovies = keyword => {
         const query = keyword.split(' ').join('+');
         if (keyword) {
-            searchMovie(query).then(data => loadFilms(data.results))
+            searchMovie(query).then(data => {
+                setTotalPages(data.total_pages)
+                return data.results
+            }).then(films => loadFilms(films))
         }
         else {
             getFilms(page).then(data => loadFilms(data.results))
@@ -53,7 +56,8 @@ const mapStateToProps = ({ movies, util: {keyword} }) => {
 
 const mapDispatchToProps = {
     loadFilms,
-    setKeyword
+    setKeyword,
+    setTotalPages
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
