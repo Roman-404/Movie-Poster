@@ -26,8 +26,9 @@ const SearchBar = ({movies: { movies, page }, loadFilms, setKeyword, keyword}) =
     }
 
     const filterMovies = keyword => {
+        const query = keyword.split(' ').join('+');
         if (keyword) {
-            searchMovie(keyword.split(' ').join('+')).then(data => loadFilms(data.results))
+            searchMovie(query).then(data => loadFilms(data.results))
         }
         else {
             getFilms(page).then(data => loadFilms(data.results))

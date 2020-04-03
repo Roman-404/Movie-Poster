@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Loading from '../../loading/loading';
 import Pagination from '../pagination';
 
-const { getFilms } = new Api();
+const { getFilms, searchMovie } = new Api();
 
 class Movies extends Component {
 
@@ -30,10 +30,11 @@ class Movies extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { page } = this.props;
+        const { page, keyword } = this.props;
         if (prevProps.page !== page) {
             this.props.setLoading(true)
-            getFilms(page).then(data => this.onLoadFilms(data.results))
+            keyword ? searchMovie(keyword, page).then(data => this.onLoadFilms(data.results))
+                    : getFilms(page).then(data => this.onLoadFilms(data.results))
         }
     }
 

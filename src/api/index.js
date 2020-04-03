@@ -42,8 +42,8 @@ export default class Api {
         return result
     }
     
-    searchMovie = async (value) => {
-        const result = await this.getResourceData(`/search/movie?include_adult=false&page=1&language=en-US&query=${value}`)
+    searchMovie = async (value, page) => {
+        const result = await this.getResourceData(`/search/movie?include_adult=false&page=${page}&language=en-US&query=${value}`)
         return result
     }
 
