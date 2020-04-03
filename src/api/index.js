@@ -41,6 +41,11 @@ export default class Api {
         const result = await this.getResourceData(`/person/popular?language=en-US&page=${page}`)
         return result
     }
+    
+    searchMovie = async (value) => {
+        const result = await this.getResourceData(`/search/movie?include_adult=false&page=1&language=en-US&query=${value}`)
+        return result
+    }
 
     getPerson = async (id, page) => {
         const result = await this.getResourceData(`/person/${id}?`)

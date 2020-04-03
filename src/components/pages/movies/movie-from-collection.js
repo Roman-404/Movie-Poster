@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 export default function MovieFromCollection({film}) {
     const { id, title, poster_path, year } = film;
-    const [selected, setSelect] = useState(false)
+    const [selected, setSelect] = useState(false);
     
     if (selected) {
         return <Redirect to={`/movies/${id}`}/>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
 import { connect } from 'react-redux';
+import SearchBar from './search-bar';
 
 const Header = ({ page }) => {
     return (
@@ -11,10 +12,7 @@ const Header = ({ page }) => {
                     <div>
                         <Link to='/' className='topic'>Movies</Link>
                     </div>
-                    <form>
-                        <input></input>
-                        <button>Search</button>
-                    </form>
+                    <SearchBar/>
                     <nav>
                         <Link to={`/movies/${page ? `?page=${page}` : ''}`} className='link'>Movies</Link>
                         <Link to='/people/' className='link'>People</Link>

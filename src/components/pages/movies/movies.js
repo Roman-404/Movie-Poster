@@ -45,7 +45,7 @@ class Movies extends Component {
     render() {
         const { history, movies, loading } = this.props;
         const { total_pages } = this.state;
-        // console.log(this.props)
+        console.log(this.props)
 
         return (
             <Fragment>
@@ -71,8 +71,8 @@ class Movies extends Component {
     };
 };
 
-const mapStateToProps = ({ movies, page, loading }) => {
-    return { movies, page, loading }
+const mapStateToProps = ({ movies: { movies, page }, util: { loading, keyword }}) => {
+    return { movies, page, loading, keyword }
 };
 
 export default connect(mapStateToProps, actions)(Movies);

@@ -20,3 +20,10 @@ export const setLoading = value => {
         payload: value
     }
 }
+
+export const setKeyword = keyword => {
+    return {
+        type: actionTypes.SET_KEYWORD,
+        payload: keyword
+    }
+}

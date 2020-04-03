@@ -1,3 +1,9 @@
+// MOVIES
 export const LOAD_FILMS = 'LOAD_FILMS';
 export const GET_CURRENT_PAGE = 'GET_CURRENT_PAGE';
+
+// KEYWORD
+export const SET_KEYWORD = 'SET_KEYWORD';
+
+// LOADING
 export const SET_LOADING = 'SET_LOADING';
