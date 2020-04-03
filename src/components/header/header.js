@@ -29,7 +29,7 @@ const Header = ({ page }) => {
     )
 }
 
-const mapStateToProps = ({ page }) => {
+const mapStateToProps = ({ movies: { page }}) => {
     return { page }
 }
 
