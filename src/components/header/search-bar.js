@@ -29,13 +29,19 @@ const SearchBar = ({movies: { movies, page }, loadFilms, setTotalPages, setKeywo
         const query = keyword.split(' ').join('+');
         if (keyword) {
             searchMovie(query).then(data => {
-                setTotalPages(data.total_pages)
-                return data.results
-            }).then(films => loadFilms(films))
+                setMoviesPage(data)
+            })
         }
         else {
-            getFilms(page).then(data => loadFilms(data.results))
+            getFilms(page).then(data => {
+                setMoviesPage(data)
+            })
         }
+    }
+
+    const setMoviesPage = async data => {
+        await setTotalPages(data.total_pages)
+        loadFilms(data.results)
     }
 
     return (
