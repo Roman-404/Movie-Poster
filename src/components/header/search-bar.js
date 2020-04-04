@@ -1,11 +1,11 @@
 import React from 'react';
 import Api from '../../api';
-import { loadFilms, setKeyword, setTotalPages } from '../../actions';
+import { getFilms, setKeyword, setTotalPages } from '../../actions';
 import { connect } from 'react-redux';
 
-const { searchMovie, getFilms } = new Api();
+const { searchMovie, loadFilms } = new Api();
 
-const SearchBar = ({movies: { movies, page }, loadFilms, setTotalPages, setKeyword, keyword}) => {
+const SearchBar = ({movies: { movies, page }, getFilms, setTotalPages, setKeyword, keyword}) => {
 
     const handleFilterFilms = e => {
         e.preventDefault()
@@ -25,7 +25,7 @@ const SearchBar = ({movies: { movies, page }, loadFilms, setTotalPages, setKeywo
             })
         }
         else {
-            getFilms(page).then(data => {
+            loadFilms(page).then(data => {
                 setMoviesPage(data)
             })
         }
@@ -33,7 +33,7 @@ const SearchBar = ({movies: { movies, page }, loadFilms, setTotalPages, setKeywo
 
     const setMoviesPage = async data => {
         await setTotalPages(data.total_pages)
-        loadFilms(data.results)
+        getFilms(data.results)
     }
 
     return (
@@ -53,7 +53,7 @@ const mapStateToProps = ({ movies, util: {keyword}}) => {
 }
 
 const mapDispatchToProps = {
-    loadFilms,
+    getFilms,
     setKeyword,
     setTotalPages
 }

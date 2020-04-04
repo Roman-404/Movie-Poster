@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Loading from '../../loading/loading';
 import Pagination from '../pagination';
 
-const { getFilms, searchMovie } = new Api();
+const { loadFilms, searchMovie } = new Api();
 
 class Movies extends Component {
 
@@ -14,8 +14,8 @@ class Movies extends Component {
     //     total_pages: null,
     // }
 
-    onLoadFilms = movies => {
-        this.props.loadFilms(movies)
+    ongetFilms = movies => {
+        this.props.getFilms(movies)
         this.props.setLoading(false)
     }
 
@@ -23,18 +23,18 @@ class Movies extends Component {
         const { location: { search }, setCurrPage, setTotalPages } = this.props;
         const page = search.match(/\d+/g);
         setCurrPage(page)
-        getFilms(page).then(data => {
+        loadFilms(page).then(data => {
             setTotalPages(data.total_pages)
             return data.results
-        }).then(this.onLoadFilms)
+        }).then(this.ongetFilms)
     }
 
     componentDidUpdate(prevProps, prevState) {
         const { page, keyword, history, setCurrPage } = this.props;
         if (prevProps.page !== page) {
             this.props.setLoading(true)
-            keyword ? searchMovie(keyword, page).then(data => this.onLoadFilms(data.results))
-                    : getFilms(page).then(data => this.onLoadFilms(data.results))
+            keyword ? searchMovie(keyword, page).then(data => this.ongetFilms(data.results))
+                    : loadFilms(page).then(data => this.ongetFilms(data.results))
         }
         if (prevProps.keyword !== keyword) {
             setCurrPage(null)

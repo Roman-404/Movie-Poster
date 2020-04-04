@@ -13,7 +13,7 @@ export default class Api {
         }
     }
 
-    getFilms = async (page) => {
+    loadFilms = async (page) => {
         const result = await this.getResourceData(`/movie/popular?page=${page}`)
         return result
     }
@@ -37,7 +37,7 @@ export default class Api {
         return this.getResourceData(`/collection/${id}?`)
     }
     
-    getPeople = async (page) => {
+    loadPeople = async (page) => {
         const result = await this.getResourceData(`/person/popular?language=en-US&page=${page}`)
         return result
     }
@@ -47,7 +47,7 @@ export default class Api {
         return result
     }
 
-    getPerson = async (id, page) => {
+    loadPerson = async (id, page) => {
         const result = await this.getResourceData(`/person/${id}?`)
               .then(async data => {
                   const [rec_films, movies] = await Promise.all([
