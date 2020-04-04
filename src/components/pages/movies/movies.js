@@ -43,7 +43,9 @@ class Movies extends Component {
     }
 
     componentWillUnmount() {
-        this.props.setLoading(true)
+        const { setLoading, setKeyword } = this.props;
+        setKeyword('')
+        setLoading(true)
     }
 
     
