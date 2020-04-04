@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Api from '../../api';
 import { loadFilms, setKeyword, setTotalPages } from '../../actions';
 import { connect } from 'react-redux';
@@ -7,22 +7,14 @@ const { searchMovie, getFilms } = new Api();
 
 const SearchBar = ({movies: { movies, page }, loadFilms, setTotalPages, setKeyword, keyword}) => {
 
-    const [filter_movies, setFilter] = useState([])
-
     const handleFilterFilms = e => {
         e.preventDefault()
-        loadFilms(filter_movies)
-        setKeyword('')
+        filterMovies(keyword)
     }
 
     const onSearch = (event, arr) => {
         const value = event.target.value.toLowerCase()
-        const filter = arr.filter(e => {
-            return e.title.toLowerCase().includes(value)
-        })
         filterMovies(setKeyword(value).payload)
-        setFilter(filter)
-        console.log(keyword, value)
     }
 
     const filterMovies = keyword => {
@@ -56,7 +48,7 @@ const SearchBar = ({movies: { movies, page }, loadFilms, setTotalPages, setKeywo
     )
 }
 
-const mapStateToProps = ({ movies, util: {keyword} }) => {
+const mapStateToProps = ({ movies, util: {keyword}}) => {
     return { movies, keyword }
 }
 

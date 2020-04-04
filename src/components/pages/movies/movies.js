@@ -30,11 +30,15 @@ class Movies extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { page, keyword } = this.props;
+        const { page, keyword, history, getCurrPage } = this.props;
         if (prevProps.page !== page) {
             this.props.setLoading(true)
             keyword ? searchMovie(keyword, page).then(data => this.onLoadFilms(data.results))
                     : getFilms(page).then(data => this.onLoadFilms(data.results))
+        }
+        if (prevProps.keyword !== keyword) {
+            getCurrPage(null)
+            history.push('/movies/')
         }
     }
 
