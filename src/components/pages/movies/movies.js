@@ -20,9 +20,9 @@ class Movies extends Component {
     }
 
     componentDidMount() {
-        const { location: { search }, getCurrPage, setTotalPages } = this.props;
+        const { location: { search }, setCurrPage, setTotalPages } = this.props;
         const page = search.match(/\d+/g);
-        getCurrPage(page)
+        setCurrPage(page)
         getFilms(page).then(data => {
             setTotalPages(data.total_pages)
             return data.results
@@ -30,14 +30,14 @@ class Movies extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { page, keyword, history, getCurrPage } = this.props;
+        const { page, keyword, history, setCurrPage } = this.props;
         if (prevProps.page !== page) {
             this.props.setLoading(true)
             keyword ? searchMovie(keyword, page).then(data => this.onLoadFilms(data.results))
                     : getFilms(page).then(data => this.onLoadFilms(data.results))
         }
         if (prevProps.keyword !== keyword) {
-            getCurrPage(null)
+            setCurrPage(null)
             history.push('/movies/')
         }
     }

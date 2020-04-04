@@ -13,7 +13,7 @@ const reducer = (state = initState, action) => {
                 ...state,
                 movies: action.payload
             }
-        case actionTypes.GET_CURRENT_PAGE:
+        case actionTypes.SET_CURRENT_PAGE:
             return {
                 ...state,
                 page: action.payload

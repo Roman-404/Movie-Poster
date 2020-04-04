@@ -7,9 +7,9 @@ export const loadFilms = films => {
     }
 }
 
-export const getCurrPage = page => {
+export const setCurrPage = page => {
     return {
-        type: actionTypes.GET_CURRENT_PAGE,
+        type: actionTypes.SET_CURRENT_PAGE,
         payload: page
     }
 }
