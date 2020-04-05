@@ -39,9 +39,9 @@ const SearchBar = ({movies: { movies, page }, getFilms, setTotalPages, setKeywor
     return (
         <form onSubmit={handleFilterFilms}>
             <fieldset>
-                <input placeholder='search...'
+                <input className='input-filter'
                        type='text'
-                       className='input-filter'
+                       placeholder='search...'
                        onChange={(e) => onSearch(e, movies)}
                        value={keyword}/>
                 <button className='btn btn-outline-success button-submit' type='submit'>Search</button>
