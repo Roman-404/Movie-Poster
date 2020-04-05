@@ -111,3 +111,26 @@ h1 {
     color: ivory;
     font-size: 50px;
 }
+
+.button-submit {
+    flex: 1 1 auto;
+    margin: 5px;
+}
+
+.input-filter {
+    background-color: inherit;
+    border: 1px solid #43ac6a;
+}
+
+.input-filter:focus {
+    background-color: rgb(67, 172, 106, .6);
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.input-filter::placeholder {
+    color: #43ac6a;
+    font-size: 1.2em;
+    font-style: italic;
+}

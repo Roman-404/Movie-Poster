@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import CatchError from './components/error-catch/error-catch';
 import { BrowserRouter as Router } from 'react-router-dom';
 import store from './store';
-// import './static/theme/bootstrap.css';
+import './static/theme/custom-theme.css';
 
 ReactDOM.render(
     <Provider store={store}>

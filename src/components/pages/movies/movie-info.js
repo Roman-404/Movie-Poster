@@ -123,11 +123,11 @@ const MovieInfo = ({ match, setLoading, loading }) => {
                                         {collection_description}
                                      </section>
                                 </figure> : null}
-                    <div className='movie-collection-container'>
+                    <ul className='movie-collection-container'>
                         {collection.filter(e => e.id !== film.id)
                                    .map(film => <MovieFromCollection key={film.id}
                                                                      film={createMovieFromCollectionItem(film)}/>)}
-                    </div>
+                    </ul>
                     <footer className='container-production-companies'>
                         {film.production_companies.map(e => <img className='production-company'
                                                                  key={e.id}
