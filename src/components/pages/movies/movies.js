@@ -14,7 +14,7 @@ class Movies extends Component {
     //     total_pages: null,
     // }
 
-    ongetFilms = movies => {
+    onLoadFilms = movies => {
         this.props.getFilms(movies)
         this.props.setLoading(false)
     }
@@ -26,15 +26,15 @@ class Movies extends Component {
         loadFilms(page).then(data => {
             setTotalPages(data.total_pages)
             return data.results
-        }).then(this.ongetFilms)
+        }).then(this.onLoadFilms)
     }
 
     componentDidUpdate(prevProps, prevState) {
         const { page, keyword, history, setCurrPage } = this.props;
         if (prevProps.page !== page) {
             this.props.setLoading(true)
-            keyword ? searchMovie(keyword, page).then(data => this.ongetFilms(data.results))
-                    : loadFilms(page).then(data => this.ongetFilms(data.results))
+            keyword ? searchMovie(keyword, page).then(data => this.onLoadFilms(data.results))
+                    : loadFilms(page).then(data => this.onLoadFilms(data.results))
         }
         if (prevProps.keyword !== keyword) {
             setCurrPage(null)
