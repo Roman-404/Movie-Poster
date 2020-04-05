@@ -34,3 +34,10 @@ export const setTotalPages = pages => {
         payload: pages
     }
 }
+
+export const setStyles = styles => {
+    return {
+        type: actionTypes.SET_STYLES,
+        payload: styles
+    }
+} 

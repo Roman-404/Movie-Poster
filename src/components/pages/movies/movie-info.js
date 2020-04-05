@@ -142,7 +142,7 @@ const MovieInfo = ({ match, setLoading, loading }) => {
     )
 }
 
-const mapStateToProps = ({ util: { loading }}) => {
+const mapStateToProps = ({ loading }) => {
     return { loading }
 }
 

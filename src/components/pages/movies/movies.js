@@ -77,7 +77,7 @@ class Movies extends Component {
     };
 };
 
-const mapStateToProps = ({ movies: { movies, page, total_pages }, util: { loading, keyword }}) => {
+const mapStateToProps = ({ loading, movies: { movies, page, total_pages }, util: { keyword }}) => {
     return { movies, page, loading, keyword, total_pages }
 };
 

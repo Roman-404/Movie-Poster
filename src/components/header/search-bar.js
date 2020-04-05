@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 const { searchMovie, loadFilms } = new Api();
 
-const SearchBar = ({movies: { movies, page }, getFilms, setTotalPages, setKeyword, keyword}) => {
+const SearchBar = ({ movies: { movies, page }, styles, getFilms, setTotalPages, setKeyword, keyword }) => {
 
     const handleFilterFilms = e => {
         e.preventDefault()
@@ -38,20 +38,22 @@ const SearchBar = ({movies: { movies, page }, getFilms, setTotalPages, setKeywor
 
     return (
         <form onSubmit={handleFilterFilms}>
-            <fieldset disabled={false}>
+            <fieldset disabled={styles.disabled}>
                 <input className='input-filter'
                        type='text'
                        placeholder='search...'
                        onChange={(e) => onSearch(e, movies)}
                        value={keyword}/>
-                <button className='btn btn-outline-success button-submit' type='submit'>Search</button>
+                <button className='btn btn-outline-success button-submit'
+                        style={{visibility: styles.visibility}}
+                        type='submit'>Search</button>
             </fieldset>
         </form>
     )
 }
 
-const mapStateToProps = ({ movies, util: {keyword}}) => {
-    return { movies, keyword }
+const mapStateToProps = ({ movies, util: { keyword, styles }}) => {
+    return { movies, keyword, styles }
 }
 
 const mapDispatchToProps = {

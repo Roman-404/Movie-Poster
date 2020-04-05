@@ -2,7 +2,10 @@ import * as actionTypes from '../action-types';
 
 const initState = {
     keyword: '',
-    loading: true
+    styles: {
+        disabled: true,
+        visibility: 'hidden'
+    }
 }
 
 const reducer = (state = initState, action) => {
@@ -12,10 +15,10 @@ const reducer = (state = initState, action) => {
                 ...state,
                 keyword: action.payload
             }
-        case actionTypes.SET_LOADING:
+        case actionTypes.SET_STYLES:
             return {
                 ...state,
-                loading: action.payload
+                styles: action.payload
             }
     
         default:
