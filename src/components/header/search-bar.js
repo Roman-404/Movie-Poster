@@ -38,7 +38,7 @@ const SearchBar = ({movies: { movies, page }, getFilms, setTotalPages, setKeywor
 
     return (
         <form onSubmit={handleFilterFilms}>
-            <fieldset>
+            <fieldset disabled={false}>
                 <input className='input-filter'
                        type='text'
                        placeholder='search...'

@@ -143,3 +143,10 @@ h1 {
     -webkit-box-shadow: 0 0 0 0.2rem rgba(95, 184, 128, 0.5);
     box-shadow: 0 0 0 0.2rem rgba(95, 184, 128, 0.5);
 }
+
+.input-filter:disabled {
+    -webkit-box-shadow: 0 0 0 0.1rem rgba(95, 184, 128, 0.5);
+    box-shadow: 0 0 0 0.1rem rgba(95, 184, 128, 0.5);
+    opacity: .65;
+    cursor: auto;
+}
