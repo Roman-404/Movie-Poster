@@ -113,13 +113,17 @@ h1 {
 }
 
 .button-submit {
-    flex: 1 1 auto;
-    margin: 5px;
+    margin-left: 7px;
+    -webkit-box-shadow: 0 0 0 0.1rem rgba(95, 184, 128, 0.5);
+    box-shadow: 0 0 0 0.1rem rgba(95, 184, 128, 0.5);
 }
 
 .input-filter {
     background-color: inherit;
     border: 1px solid #43ac6a;
+    -webkit-box-shadow: 0 0 0 0.1rem rgba(95, 184, 128, 0.5);
+    box-shadow: 0 0 0 0.1rem rgba(95, 184, 128, 0.5);
+    outline: none;
 }
 
 .input-filter:focus {
@@ -133,4 +137,9 @@ h1 {
     color: #43ac6a;
     font-size: 1.2em;
     font-style: italic;
+}
+
+.input-filter:active {
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(95, 184, 128, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(95, 184, 128, 0.5);
 }
