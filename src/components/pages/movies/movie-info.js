@@ -2,7 +2,7 @@ import React, { useEffect, useState, Fragment } from 'react';
 import './movie-info.css';
 import Api from '../../../api';
 import Loading from '../../loading/loading';
-import { setLoading } from '../../../actions';
+import { setLoading, setStyles } from '../../../actions';
 import { connect } from 'react-redux';
 import MovieFromCollection from './movie-from-collection';
 
@@ -10,7 +10,7 @@ const { getFilm, loadCollection } = new Api();
 const img_url = 'https://image.tmdb.org/t/p/w500';
 const img_url_orig = 'https://image.tmdb.org/t/p/original';
 
-const MovieInfo = ({ match, setLoading, loading }) => {
+const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
 
     const {id} = match.params;
     const [film, setFilm] = useState({});
@@ -27,6 +27,13 @@ const MovieInfo = ({ match, setLoading, loading }) => {
             console.log(film)
         })
     }, [id, setLoading])
+
+    useEffect(() => {
+        setStyles({
+            disabled: true,
+            visibility: 'visible'
+        })
+    },[])
 
     const getTrailer = async film => {
         const N = film.videos.results.length;
@@ -147,7 +154,8 @@ const mapStateToProps = ({ loading }) => {
 }
 
 const mapDispatchToProps = {
-    setLoading
+    setLoading,
+    setStyles
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

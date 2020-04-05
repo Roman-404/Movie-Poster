@@ -20,8 +20,12 @@ class Movies extends Component {
     }
 
     componentDidMount() {
-        const { location: { search }, setCurrPage, setTotalPages } = this.props;
+        const { location: { search }, setCurrPage, setTotalPages, setStyles } = this.props;
         const page = search.match(/\d+/g);
+        setStyles({
+            disabled: false,
+            visibility: 'hidden'
+        })
         setCurrPage(page)
         loadFilms(page).then(data => {
             setTotalPages(data.total_pages)
@@ -51,7 +55,6 @@ class Movies extends Component {
     
     render() {
         const { history, movies, loading, total_pages } = this.props;
-        console.log(this.props)
 
         return (
             <Fragment>

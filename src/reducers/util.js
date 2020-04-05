@@ -4,7 +4,7 @@ const initState = {
     keyword: '',
     styles: {
         disabled: true,
-        visibility: 'hidden'
+        visibility: 'visible'
     }
 }
 

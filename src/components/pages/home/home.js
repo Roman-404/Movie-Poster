@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import * as actions from '../../../actions';
 import './home.css';
+import { connect } from 'react-redux';
 
-export default class Home extends Component {
+class Home extends Component {
     
-    componentDidMount() {}
+    componentDidMount() {
+        this.props.setStyles({
+            disabled: true,
+            visibility: 'visible'
+        })
+    }
     
     render() {
         return (
@@ -13,3 +20,5 @@ export default class Home extends Component {
         )
     }
 }
+
+export default connect(null, actions)(Home);
