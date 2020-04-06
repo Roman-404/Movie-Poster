@@ -12,4 +12,13 @@
 
 .cast-crew > figure {
     margin: 0 5px;
-} 
+}
+
+.cast-crew-name {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.cast-crew-role {
+    color: dimgray;
+}

@@ -15,8 +15,8 @@ export default ({ person, url, field}) => {
 const format = (item, field) => {
     return (
         <Fragment>
-            <div>{item.name}</div>
-            <div>{item[field]}</div>
+            <div className='cast-crew-name'>{item.name}</div>
+            <div className='cast-crew-role'>{item[field]}</div>
         </Fragment>
     )
 }
