@@ -83,7 +83,24 @@
 } */
 
 .movie-list-info {
+    font-size: 20px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 1% 0 0;
     max-width: 700px;
+    border: double 4px slategray;
+    background-color: silver;
+    border-radius: 1em;
+}
+
+.movie-list-info > li {
+    margin: 1% 5%;
+    padding: 3% 0 1%;
+    border-bottom: slategrey 1px solid;
+}
+
+.movie-list-info > li:hover {
+    opacity: .5;
 }
 
 /* .cast-crew {
@@ -95,7 +112,7 @@
     font-style: oblique;
     float: left;
     margin: 0 auto;
-    /* padding-top: 5%; */
+    padding-top: 5%;
     text-align: center;
 }
 

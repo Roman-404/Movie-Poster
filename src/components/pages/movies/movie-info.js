@@ -33,7 +33,7 @@ const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
             disabled: true,
             visibility: 'visible'
         })
-    },[])
+    }, [setStyles])
 
     const getTrailer = async film => {
         const N = film.videos.results.length;
@@ -99,7 +99,6 @@ const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
                             <ul className='movie-list-info'>
                                 {film.budget ? <li>Budget: {film.budget} &#36;</li> : null}
                                 {film.revenue ? <li>Revenue: {film.revenue} &#36;</li> : null}
-                                {film.homepage && <li><p>Homepage: <a href={film.homepage}>{film.homepage}</a></p></li>}
                                 <li>Release Date: {new Date(film.release_date).toLocaleDateString('en-GB', {
                                     day: 'numeric',
                                     month: 'long',
@@ -112,6 +111,7 @@ const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
                                                                              {`${e.name}\n${e.origin_country ? `(${e.origin_country})` : String.fromCharCode(174)}`}
                                                                         </div>)}
                                 </li>
+                                {film.homepage && <li><p>Homepage: <a href={film.homepage}>{film.homepage}</a></p></li>}
                             </ul>
                             <div className='rating'>
                                 Rating: <br/>
