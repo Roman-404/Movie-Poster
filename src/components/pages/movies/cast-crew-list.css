@@ -1,0 +1,15 @@
+.cast-crew {
+    margin: 10px auto;
+}
+
+.cast-crew img {
+    width: 200px;
+}
+
+.cast-crew img + figcaption {
+    text-align: center;
+}
+
+.cast-crew > figure {
+    margin: 0 5px;
+} 

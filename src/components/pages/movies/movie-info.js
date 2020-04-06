@@ -5,6 +5,7 @@ import Loading from '../../loading/loading';
 import { setLoading, setStyles } from '../../../actions';
 import { connect } from 'react-redux';
 import MovieFromCollection from './movie-from-collection';
+import CastCrewList from './cast-crew-list';
 
 const { getFilm, loadCollection } = new Api();
 const img_url = 'https://image.tmdb.org/t/p/w500';
@@ -104,10 +105,10 @@ const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
                             year: 'numeric'
                         })}</li>
                         <li><span>Duration:</span> {setTimeFromMinutes(film.runtime)}</li>
-                        <li>{film.production_countries.map((e,i) => <div key={i} className='item'>{`${e.name}\n(${e.iso_3166_1})`}</div>)}</li>
+                        <li>{film.production_countries.map((e,i) => <div key={i} className='item'>{`${e.name} (${e.iso_3166_1})`}</div>)}</li>
                         <li>{film.production_companies.map(e => <div key={e.id}
-                                                                        className='item'>
-                                                                        {`${e.name}\n${e.origin_country ? `(${e.origin_country})` : String.fromCharCode(174)}`}
+                                                                     className='item'>
+                                                                        {`${e.name} ${e.origin_country ? `(${e.origin_country})` : String.fromCharCode(174)}`}
                                                                 </div>)}
                         </li>
                         {film.homepage && <li><p><span>Homepage:</span> <a href={film.homepage}>{film.homepage}</a></p></li>}
@@ -119,7 +120,18 @@ const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
                         </div>
                     </div>
                     </div>
-                    <div className='cast-crew'>{film.cast.map(e => <div>{e.name}</div>)}</div>
+                    <div className='cast'>
+                        {film.cast.map(e => <CastCrewList person={e}
+                                                          key={e.credit_id}
+                                                          field='character'
+                                                          url={`${img_url}${e.profile_path}`}/>)}
+                    </div>
+                    <div className='crew'>
+                        {film.crew.map(e => <CastCrewList person={e}
+                                                          key={e.credit_id}
+                                                          field='job'
+                                                          url={`${img_url}${e.profile_path}`}/>)}
+                    </div>
                     {film.belongs_to_collection ? 
                                 <figure className='movie-figure'>
                                     <p><b>{film.belongs_to_collection.name}</b></p>

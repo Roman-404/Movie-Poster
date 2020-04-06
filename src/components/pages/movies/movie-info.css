@@ -9,6 +9,7 @@
 
 .poster {
     border: 1px solid slategrey;
+    max-height: 760px;
 }
 
 .image {
@@ -116,9 +117,9 @@
     color: darkgreen;
 }
 
-/* .cast-crew {
-    display: block;
-} */
+.cast, .crew {
+    display: flex;
+}
 
 .rating {
     font-size: 45px;
