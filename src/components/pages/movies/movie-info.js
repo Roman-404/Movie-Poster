@@ -95,33 +95,31 @@ const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
                                 src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}>
                             </iframe>
                         : null}
-                        {/* <div className='movie-info'> */}
-                            <ul className='movie-list-info'>
-                                {film.budget ? <li>Budget: {film.budget} &#36;</li> : null}
-                                {film.revenue ? <li>Revenue: {film.revenue} &#36;</li> : null}
-                                <li>Release Date: {new Date(film.release_date).toLocaleDateString('en-GB', {
-                                    day: 'numeric',
-                                    month: 'long',
-                                    year: 'numeric'
-                                })}</li>
-                                <li>Duration: {setTimeFromMinutes(film.runtime)}</li>
-                                <li>{film.production_countries.map((e,i) => <div key={i} className='item'>{`${e.name}\n(${e.iso_3166_1})`}</div>)}</li>
-                                <li>{film.production_companies.map(e => <div key={e.id}
-                                                                             className='item'>
-                                                                             {`${e.name}\n${e.origin_country ? `(${e.origin_country})` : String.fromCharCode(174)}`}
-                                                                        </div>)}
-                                </li>
-                                {film.homepage && <li><p>Homepage: <a href={film.homepage}>{film.homepage}</a></p></li>}
-                            </ul>
-                            <div className='rating'>
-                                Rating: <br/>
-                                <div className='rating-value'>
-                                    {film.vote_average}
-                                </div>
-                            </div>
-                        {/* </div> */}
-                        {/* <div className='cast-crew'>cast</div> */}
+                    <ul className='movie-list-info'>
+                        {film.budget ? <li>Budget: {film.budget} &#36;</li> : null}
+                        {film.revenue ? <li>Revenue: {film.revenue} &#36;</li> : null}
+                        <li>Release Date: {new Date(film.release_date).toLocaleDateString('en-GB', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        })}</li>
+                        <li>Duration: {setTimeFromMinutes(film.runtime)}</li>
+                        <li>{film.production_countries.map((e,i) => <div key={i} className='item'>{`${e.name}\n(${e.iso_3166_1})`}</div>)}</li>
+                        <li>{film.production_companies.map(e => <div key={e.id}
+                                                                        className='item'>
+                                                                        {`${e.name}\n${e.origin_country ? `(${e.origin_country})` : String.fromCharCode(174)}`}
+                                                                </div>)}
+                        </li>
+                        {film.homepage && <li><p>Homepage: <a href={film.homepage}>{film.homepage}</a></p></li>}
+                    </ul>
+                    <div className='rating'>
+                        Rating: <br/>
+                        <div className='rating-value'>
+                            {film.vote_average}
+                        </div>
                     </div>
+                    </div>
+                    <div className='cast-crew'>{film.cast.map(e => <div>{e.name}</div>)}</div>
                     {film.belongs_to_collection ? 
                                 <figure className='movie-figure'>
                                     <p><b>{film.belongs_to_collection.name}</b></p>
