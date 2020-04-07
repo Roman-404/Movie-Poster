@@ -12,6 +12,15 @@
 
 .cast-crew > figure {
     margin: 0 5px;
+    border: dimgray 1px dashed;
+}
+
+.cast-crew > figure:hover {
+    cursor: pointer;
+}
+
+.cast-crew > figure:active {
+    cursor: wait;
 }
 
 .cast-crew-name {
@@ -21,4 +30,5 @@
 
 .cast-crew-role {
     color: dimgray;
+    padding: 1% 1% 2%;
 }

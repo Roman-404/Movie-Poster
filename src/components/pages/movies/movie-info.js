@@ -123,13 +123,13 @@ const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
                     <div className='cast'>
                         {film.cast.map(e => <CastCrewList person={e}
                                                           key={e.credit_id}
-                                                          field='character'
+                                                          role={e.character}
                                                           url={`${img_url}${e.profile_path}`}/>)}
                     </div>
                     <div className='crew'>
                         {film.crew.map(e => <CastCrewList person={e}
                                                           key={e.credit_id}
-                                                          field='job'
+                                                          role={e.job}
                                                           url={`${img_url}${e.profile_path}`}/>)}
                     </div>
                     {film.belongs_to_collection ? 

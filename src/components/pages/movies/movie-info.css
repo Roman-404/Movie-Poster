@@ -165,6 +165,10 @@
     text-align: center;
 }
 
+.movie-collection-container figure:hover {
+    cursor: pointer;
+}
+
 .collection-description {
     text-align: left;
     max-width: 800px;
