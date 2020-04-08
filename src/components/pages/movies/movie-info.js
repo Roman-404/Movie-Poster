@@ -161,8 +161,12 @@ const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
 
 const sift = (arr, field) => {
     const result = arr.reduce((acc, obj) => { 
-        let index = acc.findIndex((elm) => {return elm.name === obj.name});
-        if(index === -1){ return acc.concat(Object.assign({}, obj)) };
+        let index = acc.findIndex(e => {
+            return e.id === obj.id
+        });
+        if(index === -1) {
+            return acc.concat(Object.assign({}, obj))
+        };
         acc[index][field] += ' / ' + obj[field]; 
         return acc
      }, [])
