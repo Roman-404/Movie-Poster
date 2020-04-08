@@ -127,7 +127,7 @@ const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
                                                           url={`${img_url}${e.profile_path}`}/>)}
                     </div>
                     <div className='crew'>
-                        {film.crew.map(e => <CastCrewList person={e}
+                        {sift(film.crew, 'job').map(e => <CastCrewList person={e}
                                                           key={e.credit_id}
                                                           role={e.job}
                                                           url={`${img_url}${e.profile_path}`}/>)}
@@ -157,6 +157,16 @@ const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
             </div>
         </div>
     )
+}
+
+const sift = (arr, field) => {
+    const result = arr.reduce((acc, obj) => { 
+        let index = acc.findIndex((elm) => {return elm.name === obj.name});
+        if(index === -1){ return acc.concat(Object.assign({}, obj)) };
+        acc[index][field] += ' / ' + obj[field]; 
+        return acc
+     }, [])
+     return result
 }
 
 const mapStateToProps = ({ loading }) => {

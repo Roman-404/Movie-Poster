@@ -16,7 +16,7 @@
 }
 
 .cast-crew > figure:hover {
-    cursor: pointer;
+    cursor: url(../../../static/img/scissors.png) 12 14 , pointer;
 }
 
 .cast-crew > figure:active {
@@ -26,6 +26,7 @@
 .cast-crew-name {
     font-size: 18px;
     font-weight: 900;
+    padding: 0 1%;
 }
 
 .cast-crew-role {
