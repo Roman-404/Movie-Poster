@@ -17,6 +17,8 @@
 
 .cast-crew > figure:hover {
     cursor: url(../../../static/img/scissors.png) 12 14 , pointer;
+    transform: translateY(-10px);
+    transition: .5s;
 }
 
 .cast-crew > figure:active {
