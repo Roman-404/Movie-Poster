@@ -4,7 +4,7 @@
 }
 
 .cast-crew img {
-    width: 200px;
+    width: 100%;
 }
 
 .cast-crew img + figcaption {
@@ -13,6 +13,7 @@
 
 .cast-crew > figure {
     margin: 0 5px;
+    width: 200px;
     border: dimgray 1px dashed;
 }
 
@@ -41,3 +42,9 @@
 .slick-next:before {
     color: gray !important;
 }
+
+.slick-prev, .slick-next {
+    margin: 0 5px 0;
+}
+
+/* .slick-list {} */
