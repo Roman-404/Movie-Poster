@@ -6,10 +6,23 @@ import { setLoading, setStyles } from '../../../actions';
 import { connect } from 'react-redux';
 import MovieFromCollection from './movie-from-collection';
 import CastCrewList from './cast-crew-list';
+import Slider from 'react-slick';
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const { getFilm, loadCollection } = new Api();
 const img_url = 'https://image.tmdb.org/t/p/w500';
 const img_url_orig = 'https://image.tmdb.org/t/p/original';
+
+
+const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 8,
+    slidesToScroll: 8
+};
 
 const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
 
@@ -121,16 +134,20 @@ const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
                     </div>
                     </div>
                     <div className='cast'>
-                        {film.cast.map(e => <CastCrewList person={e}
-                                                          key={e.credit_id}
-                                                          role={e.character}
-                                                          url={`${img_url}${e.profile_path}`}/>)}
+                        <Slider {...settings}>
+                            {film.cast.map(e => <CastCrewList person={e}
+                                                              key={e.credit_id}
+                                                              role={e.character}
+                                                              url={`${img_url}${e.profile_path}`}/>)}
+                        </Slider>
                     </div>
                     <div className='crew'>
-                        {sift(film.crew, 'job').map(e => <CastCrewList person={e}
-                                                          key={e.credit_id}
-                                                          role={e.job}
-                                                          url={`${img_url}${e.profile_path}`}/>)}
+                        <Slider {...settings}>
+                            {sift(film.crew, 'job').map(e => <CastCrewList person={e}
+                                                                           key={e.credit_id}
+                                                                           role={e.job}
+                                                                           url={`${img_url}${e.profile_path}`}/>)}
+                        </Slider>
                     </div>
                     {film.belongs_to_collection ? 
                                 <figure className='movie-figure'>

@@ -118,7 +118,7 @@
 }
 
 .cast, .crew {
-    display: flex;
+    margin: 0 auto;
 }
 
 .rating {
