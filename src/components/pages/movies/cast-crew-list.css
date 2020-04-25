@@ -1,5 +1,8 @@
 .cast-crew {
     margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: firebrick;
 }
 
@@ -44,7 +47,7 @@
 }
 
 .slick-prev, .slick-next {
-    margin: 0 5px 0;
+    margin: 0 10px 0;
 }
 
 /* .slick-list {} */
