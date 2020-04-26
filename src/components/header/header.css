@@ -150,3 +150,20 @@ h1 {
     opacity: .65;
     cursor: auto;
 }
+
+.similar-films {
+    display: flex;
+    margin: 3em 0;
+}
+
+.similar-films-item {
+    margin: 0 1em;
+}
+
+.similar-films-item img {
+    height: 400px;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after {
+    color: indianred;
+}

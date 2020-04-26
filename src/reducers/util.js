@@ -5,7 +5,8 @@ const initState = {
     styles: {
         disabled: true,
         visibility: 'visible'
-    }
+    },
+    similar_films: []
 }
 
 const reducer = (state = initState, action) => {
@@ -19,6 +20,11 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 styles: action.payload
+            }
+        case actionTypes.GET_SIMILAR_FILMS:
+            return {
+                ...state,
+                similar_films: action.payload
             }
     
         default:

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './movie-from-collection.css';
 import { Redirect } from 'react-router-dom';
 
-export default function MovieFromCollection({film}) {
+export default function MovieFromCollection({ film }) {
     const { id, title, poster_path, year } = film;
     const [selected, setSelect] = useState(false);
     

@@ -2,7 +2,7 @@ import React, { useEffect, useState, Fragment } from 'react';
 import './movie-info.css';
 import Api from '../../../api';
 import Loading from '../../loading/loading';
-import { setLoading, setStyles } from '../../../actions';
+import { setLoading, setStyles, getSimilarFilms } from '../../../actions';
 import { connect } from 'react-redux';
 import MovieFromCollection from './movie-from-collection';
 import CastCrewList from './cast-crew-list';
@@ -11,7 +11,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const { getFilm, loadCollection } = new Api();
+const { getFilm, loadCollection, loadSimilarFilms } = new Api();
 const img_url = 'https://image.tmdb.org/t/p/w500';
 const img_url_orig = 'https://image.tmdb.org/t/p/original';
 
@@ -24,7 +24,7 @@ const settings = {
     slidesToScroll: 8
 };
 
-const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
+const MovieInfo = ({ match, setLoading, setStyles, getSimilarFilms, loading }) => {
 
     const {id} = match.params;
     const [film, setFilm] = useState({});
@@ -38,9 +38,9 @@ const MovieInfo = ({ match, setLoading, setStyles, loading }) => {
             getTrailer(film)
             getCollection(film)
             setLoading(false)
-            console.log(film)
         })
-    }, [id, setLoading])
+        loadSimilarFilms(id).then(data => getSimilarFilms(data.results))
+    }, [id, setLoading, getSimilarFilms])
 
     useEffect(() => {
         setStyles({
@@ -196,7 +196,8 @@ const mapStateToProps = ({ loading }) => {
 
 const mapDispatchToProps = {
     setLoading,
-    setStyles
+    setStyles,
+    getSimilarFilms
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

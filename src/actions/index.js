@@ -40,4 +40,11 @@ export const setStyles = styles => {
         type: actionTypes.SET_STYLES,
         payload: styles
     }
-} 
+}
+
+export const getSimilarFilms = films => {
+    return {
+        type: actionTypes.GET_SIMILAR_FILMS,
+        payload: films
+    }
+}

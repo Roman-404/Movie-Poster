@@ -18,6 +18,10 @@ export default class Api {
         return result
     }
 
+    loadSimilarFilms = id => {
+        return this.getResourceData(`/movie/${id}/similar?`)
+    }
+
     getFilm = async (id) => {
         const result = await this.getResourceData(`/movie/${id}?append_to_response=videos,images`)
               .then(async data => {

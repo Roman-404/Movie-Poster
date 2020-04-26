@@ -6,6 +6,7 @@ export const SET_TOTAL_PAGES = 'SET_TOTAL_PAGES';
 // UTIL
 export const SET_KEYWORD = 'SET_KEYWORD';
 export const SET_STYLES = 'SET_STYLES';
+export const GET_SIMILAR_FILMS = 'GET_SIMILAR_FILMS';
 
 // LOADING
 export const SET_LOADING = 'SET_LOADING';
