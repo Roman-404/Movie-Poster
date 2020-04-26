@@ -42,6 +42,7 @@ const MovieInfo = ({ match, setLoading, setStyles, getSimilarFilms, loading }) =
         loadSimilarFilms(id).then(data => getSimilarFilms(data.results))
         return () => {
             setLoading(true)
+            getSimilarFilms([])
             setCollection([])
         }
     }, [id, setLoading, getSimilarFilms])
