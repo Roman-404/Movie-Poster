@@ -40,6 +40,9 @@ const MovieInfo = ({ match, setLoading, setStyles, getSimilarFilms, loading }) =
             setLoading(false)
         })
         loadSimilarFilms(id).then(data => getSimilarFilms(data.results))
+        return () => {
+            setCollection([])
+        }
     }, [id, setLoading, getSimilarFilms])
 
     useEffect(() => {
