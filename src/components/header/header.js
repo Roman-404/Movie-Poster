@@ -44,7 +44,8 @@ const Header = ({ page, similar_films }) => {
                     <div className='similar-films'>
                         {similar_films.length ? 
                             <Swiper {...params}>
-                                {similar_films.map((e, i) => {
+                                {similar_films.filter(({poster_path}) => poster_path !== null)
+                                .map((e, i) => {
                                     return (
                                         <div key={i}>
                                             <SimilarMovies {...e}/>
