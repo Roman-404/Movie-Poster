@@ -13,6 +13,13 @@ const params = {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     },
+    autoplay: {
+        delay: 1500,
+        disableOnInteraction: false
+    },
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 50,
 }
 
 const Header = ({ page, similar_films }) => {
@@ -35,9 +42,17 @@ const Header = ({ page, similar_films }) => {
                 <div className='recommendations'>
                     <h1 className='intro-title'>You may like it</h1>
                     <div className='similar-films'>
-                        <Swiper {...params}>
-                            {similar_films.length ? similar_films.map((film, key) => <SimilarMovies key={key} {...film}/>) : null}
-                        </Swiper>
+                        {similar_films.length ? 
+                            <Swiper {...params}>
+                                {similar_films.map((e, i) => {
+                                    return (
+                                        <div key={i}>
+                                            <SimilarMovies {...e}/>
+                                        </div>
+                                    )
+                                })}
+                            </Swiper>
+                        : null}
                     </div>
                 </div>
             </div>
