@@ -16,6 +16,6 @@ export default ({ person, url, role }) => {
 }
 
 const getBrokenImageIcon = (event, gender) => {
-    event.target.style = 'width: 100%; height: 300px'
+    event.target.style = 'width: 100%; max-height: 300px'
     event.target.src = require(`../../../static/img/${gender ? gender === 2 ? 'male.png' : 'famale.png' : 'man.png'}`)
 }
