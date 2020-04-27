@@ -18,8 +18,8 @@ export default class Api {
         return result
     }
 
-    loadSimilarFilms = id => {
-        return this.getResourceData(`/movie/${id}/similar?`)
+    loadSimilarFilms = (id, page = 1) => {
+        return this.getResourceData(`/movie/${id}/similar?page=${page}`)
     }
 
     getFilm = async (id) => {
