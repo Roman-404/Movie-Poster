@@ -39,7 +39,10 @@ const MovieInfo = ({ match, setLoading, setStyles, getSimilarFilms, loading }) =
             getCollection(film)
             setLoading(false)
         })
-        loadSimilarFilms(id).then(data => getSimilarFilms(data.results))
+        loadSimilarFilms(id).then(data => {
+            const page = Math.floor(Math.random()*data.total_pages) + 1;
+            loadSimilarFilms(id, page).then(data => getSimilarFilms(data.results));
+        })
         return () => {
             setLoading(true)
             getSimilarFilms([])
