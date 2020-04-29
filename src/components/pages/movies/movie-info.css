@@ -199,13 +199,13 @@
     }
 }
 
-/* @media (min-width: 1678px) and (max-width: 1800px) {
+@media (min-width: 1635px) and (max-width: 1800px) {
     .movie-list-info {
         height: 580px;
     }
-} */
+}
 
-@media (min-width: 1678px) and (max-width: 1800px), (max-width: 1030px) {
+@media (min-width: 1635px) and (max-width: 1800px), (max-width: 1030px) {
     .rating {
         margin: 0 auto;
         padding: 1% 0 0;
@@ -214,5 +214,14 @@
     }
     .rating-value {
         margin-top: 10px;
+    }
+}
+
+@media (max-width: 1030px) {
+    .about iframe {
+        width: 100%;
+    }
+    .movie-list-info {
+        min-width: 100%;
     }
 }
