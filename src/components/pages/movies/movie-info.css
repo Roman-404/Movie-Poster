@@ -78,9 +78,9 @@
     max-height: 150px;
 }
 
-/* .movie-info {
-    display: flex;
-} */
+.about iframe {
+    float: left;
+}
 
 .movie-list-info {
     font-size: 20px;
@@ -91,6 +91,7 @@
     border: double 4px slategray;
     background-color: lemonchiffon;
     border-radius: .5em;
+    float: left;
 }
 
 .movie-list-info > li {
@@ -118,6 +119,7 @@
 
 .cast, .crew {
     margin: 0 auto;
+    clear: left;
 }
 
 .rating {
@@ -173,4 +175,44 @@
     max-width: 800px;
     padding: 1em;
     margin: 0 auto;
+}
+
+@media (max-width: 1800px) {
+    .about {
+        display: block;
+    }
+    .rating {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 1165px) and (max-width: 1678px) {
+    .rating {
+        margin-left: 1em;
+    }
+}
+
+@media (max-width: 1678px) {
+    .movie-list-info {
+        margin: 10px 0 0;
+        width: 777px;
+    }
+}
+
+/* @media (min-width: 1678px) and (max-width: 1800px) {
+    .movie-list-info {
+        height: 580px;
+    }
+} */
+
+@media (min-width: 1678px) and (max-width: 1800px), (max-width: 1030px) {
+    .rating {
+        margin: 0 auto;
+        padding: 1% 0 0;
+        float: none;
+        clear: both;
+    }
+    .rating-value {
+        margin-top: 10px;
+    }
 }
