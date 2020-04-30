@@ -155,10 +155,11 @@
     color: whitesmoke;
     background-color: #5f6a72;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .movie-figure img {
-    width: 800px;
+    width: 90%;
     border-radius: 5px;
 }
 

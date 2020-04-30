@@ -15,7 +15,7 @@ export default function MovieFromCollection({ film }) {
              onClick={() => setSelect(true)}>
             <figure key={id} className='movie-collection-fig'>
                 <img src={poster_path} alt=''/>
-                <figcaption className='movie-collection-title'>{title.concat(', ', year)}</figcaption>
+                <figcaption className='movie-collection-title'>{year ? title.concat(', ', year) : title}</figcaption>
             </figure>
         </div>
     )

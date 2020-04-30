@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import SearchBar from './search-bar';
 import SimilarMovies from './similar-movies';
 import Swiper from 'react-id-swiper';
+import BurgerMenu from './burger-menu';
 
 import 'swiper/css/swiper.css';
 
@@ -36,6 +37,7 @@ const Header = ({ page, similar_films }) => {
                         <Link to='/people/' className='link'>People</Link>
                         <Link to='/' className='link'>Login</Link>
                     </nav>
+                    <BurgerMenu/>
                 </div>
             </header>
             <div className='intro'>

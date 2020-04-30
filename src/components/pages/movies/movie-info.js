@@ -85,7 +85,7 @@ const MovieInfo = ({ match, setLoading, setStyles, getSimilarFilms, loading }) =
                 id,
                 title,
                 poster_path: img_url.concat(poster_path),
-                year: new Date(release_date).getFullYear()
+                year: release_date ? new Date(release_date).getFullYear() : null
             }
         }
         return {}
