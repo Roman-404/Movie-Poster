@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Pagination, PaginationItem } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core';
 import { Link, Route } from 'react-router-dom';
@@ -20,7 +20,38 @@ const useStyles = makeStyles({
 })
 
 const ModPagination = ({ total_pages, setCurrPage }) => {
+    
     const classes = useStyles()
+    const [sibling_count, setSiblingCount] = useState(3)
+
+    const handleResize = () => {
+        const range = window.innerWidth;
+
+        switch (true) {
+            case (range > 1290):
+                setSiblingCount(3)
+                break;
+            case (1080 < range && range <= 1290):
+                setSiblingCount(2)
+                break;
+            case (876 < range && range <= 1080):
+                setSiblingCount(1)
+                break;
+            case (range <= 876):
+                setSiblingCount(null)
+                break;
+        
+            default:
+                break;
+        }
+    }
+
+    useEffect(() => {
+        handleResize()
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener("resize", handleResize);
+    })
+
     return (
         <Route>
             {({ location }) => {
@@ -30,7 +61,7 @@ const ModPagination = ({ total_pages, setCurrPage }) => {
                 return (
             <Pagination count={total_pages}
                         onChange={(e, page) => setCurrPage(page)}
-                        siblingCount={3}
+                        siblingCount={sibling_count}
                         page={page}
                         variant='outlined' shape='rounded'
                         renderItem={(item) => (
