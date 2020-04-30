@@ -20,8 +20,8 @@ const settings = {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 8,
-    slidesToScroll: 8
+    slidesToShow: 5,
+    slidesToScroll: 5
 };
 
 const MovieInfo = ({ match, setLoading, setStyles, getSimilarFilms, loading }) => {
