@@ -37,7 +37,7 @@ const Header = ({ page, similar_films }) => {
                         <Link to='/people/' className='link'>People</Link>
                         <Link to='/' className='link'>Login</Link>
                     </nav>
-                    <BurgerMenu/>
+                    <BurgerMenu page = {page}/>
                 </div>
             </header>
             <div className='intro'>
