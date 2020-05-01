@@ -244,12 +244,12 @@ h1 {
 }
 
 @media (max-width: 700px) {
-    header {
+    /* header {
         height: 100px;
     }
     .loading, .loaded {
         top: 100px
-    }
+    } */
     .header > nav {
         display: none;
     }
