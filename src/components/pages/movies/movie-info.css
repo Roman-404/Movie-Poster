@@ -122,6 +122,10 @@
     clear: left;
 }
 
+.cast {
+    padding-top: 1em;
+}
+
 .rating {
     font-size: 45px;
     font-style: oblique;
