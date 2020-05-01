@@ -8,7 +8,7 @@ export default ({ page }) => {
             <Menu>
                 <Link to={`/movies/${page ? `?page=${page}` : ''}`}>Movies</Link>
                 <Link to='/people/'>People</Link>
-                <Link to='/'>Login</Link>
+                <Link to='#'>Login</Link>
             </Menu>
         </div>
     )

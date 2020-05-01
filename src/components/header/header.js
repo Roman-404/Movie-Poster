@@ -35,7 +35,7 @@ const Header = ({ page, similar_films }) => {
                     <nav>
                         <Link to={`/movies/${page ? `?page=${page}` : ''}`} className='link'>Movies</Link>
                         <Link to='/people/' className='link'>People</Link>
-                        <Link to='/' className='link'>Login</Link>
+                        <Link to='#' className='link'>Login</Link>
                     </nav>
                     <BurgerMenu page = {page}/>
                 </div>
