@@ -42,7 +42,7 @@ const Header = ({ page, similar_films }) => {
             </header>
             <div className='intro'>
                 <div className='recommendations'>
-                    <h1 className='intro-title'>You may like it</h1>
+                    <h1 className='intro-title'>{similar_films.length ? 'You may like it' : null}</h1>
                     <div className='similar-films'>
                         {similar_films.length ? 
                             <Swiper {...params}>
